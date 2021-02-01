@@ -5,15 +5,21 @@ import { withRouter } from 'react-router-dom';
 // Context
 import Context from './../../context/Context';
 
+// Components
+import Header from './../../components/Header/Header';
+
 class LogInRoute extends React.Component {
   render() {
     return (
       <Context.Consumer>
         {value => {
           return (
-            <section className="LogInRoute">
-              <p>LogInRoute works</p>
-            </section>
+            <>
+              <Header />
+              <main className="LogInRoute">
+                <p>LogInRoute works</p>
+              </main>
+            </>
           );
         }}
       </Context.Consumer>

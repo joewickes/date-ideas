@@ -9,9 +9,9 @@ import HomePageRoute from './../../routes/HomePageRoute/HomePageRoute';
 import SignUpRoute from './../../routes/SignUpRoute/SignUpRoute';
 import LogInRoute from './../../routes/LogInRoute/LogInRoute';
 
-function App() {
+export default function App() {
   return (
-    <main className="App">
+    <div className="App">
       <Switch>
         <Route exact path='/'>
           <HomePageRoute />
@@ -23,8 +23,6 @@ function App() {
           <LogInRoute />
         </Route>
       </Switch>
-    </main>
+    </div>
   );
 }
-
-export default App;
