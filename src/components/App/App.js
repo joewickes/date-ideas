@@ -13,15 +13,9 @@ export default function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path='/'>
-          <HomePageRoute />
-        </Route>
-        <Route exact path='/signup'>
-          <SignUpRoute />
-        </Route>
-        <Route exact path='/login'>
-          <LogInRoute />
-        </Route>
+        <Route exact path='/' component={() => <HomePageRoute />} />
+        <Route exact path='/signup' component={() => <SignUpRoute />} />
+        <Route exact path='/login' component={() => <LogInRoute />} />
       </Switch>
     </div>
   );
