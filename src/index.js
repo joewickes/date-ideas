@@ -1,16 +1,27 @@
+// Dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import './index.css';
-import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 
+// Styles
+import './index.css';
+
+// Context
+import { ContextProvider } from './context/Context';
+
+// Components
+import App from './components/App/App';
+
+
 ReactDOM.render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </BrowserRouter>,
+  <ContextProvider>
+    <BrowserRouter>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </BrowserRouter>
+  </ContextProvider>,
   document.getElementById('root')
 );
 
