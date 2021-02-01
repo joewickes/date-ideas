@@ -16,7 +16,7 @@ class LogInRoute extends React.Component {
           return (
             <>
               <Header />
-              <main className="LogInRoute">
+              <main className='LogInRoute'>
                 <p>LogInRoute works</p>
               </main>
             </>

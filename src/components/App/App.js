@@ -11,7 +11,7 @@ import LogInRoute from './../../routes/LogInRoute/LogInRoute';
 
 export default function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Switch>
         <Route exact path='/' component={() => <HomePageRoute />} />
         <Route exact path='/signup' component={() => <SignUpRoute />} />

@@ -16,7 +16,7 @@ export default class Header extends React.Component {
           return (
             <header>
               <section className='header-left'>
-                <NavLink to='/'><p>Date Ideas</p></NavLink>
+                <NavLink to='/'><h1>Date Ideas</h1></NavLink>
               </section>
               <section className='header-right'>
                 <ul className='login-signup-list'>

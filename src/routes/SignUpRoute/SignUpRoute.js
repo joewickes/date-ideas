@@ -16,7 +16,7 @@ class SignUpRoute extends React.Component {
           return (
             <>
               <Header />
-              <main className="SignUpRoute">
+              <main className='SignUpRoute'>
                 <p>SignUpRoute works</p>
               </main>
             </>
