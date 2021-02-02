@@ -19,6 +19,7 @@
   transition: all .15s ease-in-out;
   border-color: #FF9D1E;
   color: #FF9D1E;
+  cursor: pointer;
 }
 
 .all-ideas-container {
@@ -36,7 +37,7 @@
   align-items: center;
   border-radius: 40px;
   background: linear-gradient(to bottom right, #FF9D1E, #FF35C9); ;
-  height: 60vh;
+  height: 50vh;
   color: #fff;
   margin-top: 30px;
 }
@@ -56,7 +57,7 @@
 .idea-middle {
   flex: 4;
   width: 96%;
-  background-color: #fff;
+  background-color: #ffffffd7;
   display: flex;
   color: #000;
   flex-direction: column;
@@ -96,6 +97,7 @@
   transition: all .15s ease-in-out;
   border-color: #232323;
   color: #232323;
+  cursor: pointer;
 }
 
 @media all and (min-width: 800px) {

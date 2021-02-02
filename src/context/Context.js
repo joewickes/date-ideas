@@ -8,7 +8,8 @@ export default Context;
 export class ContextProvider extends React.Component {
   state = {
     test: 'testing Context',
-    username: 'TestUserName'
+    username: 'TestUserName',
+    firstName: 'Cole'
   }
   
   render() {

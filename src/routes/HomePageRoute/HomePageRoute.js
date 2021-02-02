@@ -10,6 +10,7 @@ import Context from '../../context/Context';
 
 // Components
 import Header from './../../components/Header/Header';
+import Welcome from './../../components/Welcome/Welcome';
 
 class HomePageRoute extends React.Component {
   render() {
@@ -20,7 +21,7 @@ class HomePageRoute extends React.Component {
             <>
               <Header />
               <main className='HomePageRoute'>
-                <p>Welcome!</p>{/* <Welcome /> */}
+                <Welcome />
                 <div className='all-ideas-btn-container'>
                   <button className='all-ideas-btn reg-btn'>Get Some Ideas</button>
                 </div>
@@ -34,12 +35,15 @@ class HomePageRoute extends React.Component {
                       <p>Go hiking</p>
                     </div>
                     <div className='idea-bottom'>
-                      <div className='already-tried-checkbox-container'>
-                        <label htmlFor='checkbox'>
-                          Already tried this?
-                        </label>
-                        <input className='checkbox' type='checkbox' />
-                      </div>
+                      {window.sessionStorage.getItem('user_credentials') ?
+                        <div className='already-tried-checkbox-container'>
+                          <label htmlFor='checkbox'>
+                            Already tried this?
+                          </label>
+                          <input className='checkbox' type='checkbox' />
+                        </div> 
+                        : null
+                      }
                       <div className='try-another-btn'>
                         <button className='reg-btn'>Try Another</button>
                       </div>
@@ -53,12 +57,15 @@ class HomePageRoute extends React.Component {
                       <p>Seafood</p>
                     </div>
                     <div className='idea-bottom'>
-                      <div className='already-tried-checkbox-container'>
-                        <label htmlFor='checkbox'>
-                          Already tried this?
-                        </label>
-                        <input className='checkbox' type='checkbox' />
-                      </div>
+                      {window.sessionStorage.getItem('user_credentials') ?
+                        <div className='already-tried-checkbox-container'>
+                          <label htmlFor='checkbox'>
+                            Already tried this?
+                          </label>
+                          <input className='checkbox' type='checkbox' />
+                        </div> 
+                        : null
+                      }
                       <div className='try-another-btn-container'>
                         <button className='reg-btn'>Try Another</button>
                       </div>
@@ -72,10 +79,15 @@ class HomePageRoute extends React.Component {
                       <p>Ice Cream Sundae</p>
                     </div>
                     <div className='idea-bottom'>
-                      <div className='already-tried-checkbox-container'>
-                        <label htmlFor='checkbox'>Already tried this?</label>
-                        <input className='checkbox' type='checkbox' />
-                      </div>
+                      {window.sessionStorage.getItem('user_credentials') ?
+                        <div className='already-tried-checkbox-container'>
+                          <label htmlFor='checkbox'>
+                            Already tried this?
+                          </label>
+                          <input className='checkbox' type='checkbox' />
+                        </div> 
+                        : null
+                      }
                       <div className='try-another-btn'>
                         <button className='reg-btn'>Try Another</button>
                       </div>

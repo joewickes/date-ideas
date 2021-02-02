@@ -1,0 +1,24 @@
+.Welcome {
+  color: #fff;
+  width: 75%;
+}
+
+.Welcome h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.Welcome ol {
+  margin-left: 20px;
+}
+
+.Welcome ol li {
+  margin-top: 10px;
+}
+
+@media all and (min-width: 800px) {
+  .Welcome {
+    width: 40%;
+  }
+}

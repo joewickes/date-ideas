@@ -1,7 +1,6 @@
 header {
   display: flex;
   background-color: #FF35C9;
-  box-shadow: 0px 2px 5px #555;
 }
 
 header a {
@@ -36,6 +35,11 @@ header a {
 
 .login-text {
   padding-right: 15px;
+}
+
+.logout-text {
+  color: #fff;
+  cursor: pointer;
 }
 
 .login-text:hover, .signup-text:hover, .logout-text:hover {
