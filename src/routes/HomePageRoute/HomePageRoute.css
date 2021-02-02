@@ -6,13 +6,14 @@
 
 .HomePageRoute hr {
   width: 75%;
+  border-top: #5F5F5F;
 }
 
 .all-ideas-btn {
   background-color: transparent;
   border: 2px solid #FF9D1E;
   color: #FF9D1E;
-  margin: 30px 0px;
+  margin: 7vh;
 }
 
 .all-ideas-btn:hover {
@@ -28,19 +29,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 10vh;
+  padding-bottom: 7vh;
 }
 
 .idea {
-  width: 75%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 40px;
   background: linear-gradient(to bottom right, #FF9D1E, #FF35C9);
-  height: 50vh;
+  height: 45vh;
   color: #fff;
-  margin-top: 30px;
+  margin-top: 7vh;
 }
 
 .idea-top {
@@ -56,7 +57,7 @@
 }
 
 .idea-middle {
-  flex: 4;
+  flex: 3;
   width: 96%;
   background-color: #ffffffd7;
   display: flex;
@@ -68,7 +69,7 @@
 }
 
 .idea-bottom {
-  flex: 2;
+  flex: 1.5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,19 +104,23 @@
 
 @media all and (min-width: 800px) {
   .HomePageRoute hr {
-    width: 56%;
+    width: 50%;
   }
   
   .all-ideas-container {
-    width: 75%;
+    width: 60%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-bottom: 25vh;
+    padding-bottom: 7vh;
   }
 
   .idea {
-    width: 25%;
-    height: 50vh;
+    width: 30%;
+    height: 45vh;
+  }
+
+  .idea-bottom {
+    flex: 3;
   }
 }

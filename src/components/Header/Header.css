@@ -23,6 +23,10 @@ header a {
   justify-content: flex-end;
 }
 
+.header-right li {
+  text-align: center;
+}
+
 .login-signup-list {
   display: flex;
   list-style-type: none;

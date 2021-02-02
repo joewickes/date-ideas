@@ -4,9 +4,12 @@
 }
 
 .Welcome h2 {
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin-top: 7vh;
   text-align: center;
+}
+
+.Welcome p {
+  margin-top: 5vh;
 }
 
 .Welcome ol {
