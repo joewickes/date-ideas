@@ -1,0 +1,47 @@
+.SignUpRoute, .signup-form, .signup-form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.SignUpRoute h2 {
+  color: #ffffff;
+  margin-top: 30px;
+}
+
+.signup-form div {
+  width: 50%;
+  padding-top: 30px;
+}
+
+.signup-form div input {
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  padding: 10px;
+  caret-color: #fff;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.signup-form div input::placeholder {
+  color: #ffffffb0;
+}
+
+.signup-form div button {
+  width: 40%;
+  padding: 15px;
+  background-color: transparent;
+  border: 2px solid #FF9D1E;
+  color: #FF9D1E;
+  margin: 10px 0px;
+  border-radius: 6px;
+}
+
+.signup-form div button:hover {
+  transition: all .15s ease-in-out;
+  border-color: #FF35C9;
+  color: #FF35C9;
+  cursor: pointer;
+}

@@ -2,6 +2,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+// Styles
+import './SignUpRoute.css';
+
 // Context
 import Context from './../../context/Context';
 
@@ -17,7 +20,24 @@ class SignUpRoute extends React.Component {
             <>
               <Header />
               <main className='SignUpRoute'>
-                <p>SignUpRoute works</p>
+                <h2>Sign Up</h2>
+                <form className='signup-form'>
+                  <div>
+                    <input type='text' placeholder='First Name' />
+                  </div>
+                  <div>
+                    <input type='text' placeholder='Username' />
+                  </div>
+                  <div>
+                    <input type='password' placeholder='Password' />
+                  </div>
+                  <div>
+                    <input type='passwrd' placeholder='Re-enter Password' />
+                  </div>
+                  <div>
+                    <button type='submit'>Sign Up</button>
+                  </div>
+                </form>
               </main>
             </>
           );

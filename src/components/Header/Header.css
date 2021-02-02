@@ -19,11 +19,6 @@ header a {
   justify-content: flex-start;
 }
 
-.header-left a:hover {
-  transition: all .2s ease-in-out;
-  transform: scale(1.07);
-}
-
 .header-right {
   justify-content: flex-end;
 }

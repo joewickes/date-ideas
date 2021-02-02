@@ -2,6 +2,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+// Styles
+import './LogInRoute.css';
+
 // Context
 import Context from './../../context/Context';
 
@@ -17,7 +20,18 @@ class LogInRoute extends React.Component {
             <>
               <Header />
               <main className='LogInRoute'>
-                <p>LogInRoute works</p>
+                <h2>Log In</h2>
+                <form className='login-form'>
+                  <div>
+                    <input type='text' placeholder='Username' />
+                  </div>
+                  <div>
+                    <input type='password' placeholder='Password' />
+                  </div>
+                  <div>
+                    <button type='submit'>Log In</button>
+                  </div>
+                </form>
               </main>
             </>
           );

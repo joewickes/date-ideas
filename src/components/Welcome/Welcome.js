@@ -7,7 +7,7 @@ import './Welcome.css';
 // Context
 import Context from './../../context/Context';
 
-export default class extends React.Component {
+export default class Welcome extends React.Component {
   render() {
     return (
       <Context.Consumer>

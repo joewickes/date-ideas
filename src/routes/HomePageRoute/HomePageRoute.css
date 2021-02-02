@@ -10,15 +10,15 @@
 
 .all-ideas-btn {
   background-color: transparent;
-  border: 2px solid #fff;
-  color: #fff;
+  border: 2px solid #FF9D1E;
+  color: #FF9D1E;
   margin: 30px 0px;
 }
 
 .all-ideas-btn:hover {
   transition: all .15s ease-in-out;
-  border-color: #FF9D1E;
-  color: #FF9D1E;
+  border-color: #FF35C9;
+  color: #FF35C9;
   cursor: pointer;
 }
 
@@ -36,7 +36,7 @@
   flex-direction: column;
   align-items: center;
   border-radius: 40px;
-  background: linear-gradient(to bottom right, #FF9D1E, #FF35C9); ;
+  background: linear-gradient(to bottom right, #FF9D1E, #FF35C9);
   height: 50vh;
   color: #fff;
   margin-top: 30px;
