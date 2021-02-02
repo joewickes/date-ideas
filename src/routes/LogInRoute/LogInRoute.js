@@ -10,6 +10,7 @@ import Context from './../../context/Context';
 
 // Components
 import Header from './../../components/Header/Header';
+import Footer from './../../components/Footer/Footer';
 
 class LogInRoute extends React.Component {
   render() {
@@ -33,6 +34,7 @@ class LogInRoute extends React.Component {
                   </div>
                 </form>
               </main>
+              <Footer />
             </>
           );
         }}

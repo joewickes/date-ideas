@@ -11,6 +11,8 @@ import Context from '../../context/Context';
 // Components
 import Header from './../../components/Header/Header';
 import Welcome from './../../components/Welcome/Welcome';
+import Footer from './../../components/Footer/Footer';
+
 
 class HomePageRoute extends React.Component {
   render() {
@@ -95,6 +97,7 @@ class HomePageRoute extends React.Component {
                   </div>
                 </section>
               </main>
+              <Footer />
             </>
           );
         }}
