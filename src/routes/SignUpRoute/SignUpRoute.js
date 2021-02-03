@@ -24,12 +24,8 @@ class SignUpRoute extends React.Component {
 
         const handleSignUpSubmit = (e, email, pass) => {
           e.preventDefault()
-          console.log(email, pass);
           firebase.auth().createUserWithEmailAndPassword(email, pass)
             .then((userCredential) => {
-              console.log('userCredentialToken', userCredential.refreshToken);
-              console.log('uid', userCredential.uid);
-              // Signed in 
               window.sessionStorage.setItem('user_credentials', userCredential.user.refreshToken);
               value.updateUID(userCredential.user.uid);
               this.props.history.push('/');

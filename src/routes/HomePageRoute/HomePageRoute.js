@@ -37,7 +37,7 @@ class HomePageRoute extends React.Component {
   handleTryAnotherDessertClick = (e) => {
     e.preventDefault();
 
-    console.log('Getting desserti idea');
+    console.log('Getting dessert idea');
   }
 
   render() {

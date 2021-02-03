@@ -21,11 +21,8 @@ class LogInRoute extends React.Component {
         {value => {
           const handleLogInSubmit = (e, email, pass) => {
             e.preventDefault();
-            console.log(email, pass);
             firebase.auth().signInWithEmailAndPassword(email, pass)
               .then((userCredential) => {
-                console.log(userCredential);
-                // Signed in
                 window.sessionStorage.setItem('user_credentials', userCredential.user.refreshToken);
                 value.updateUID(userCredential.user.uid);
                 this.props.history.push('/');

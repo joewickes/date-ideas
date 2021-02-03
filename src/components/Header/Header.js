@@ -19,9 +19,8 @@ export default class Header extends React.Component {
           const logOutUID = () => {
             firebase.auth().signOut()
               .then(() => {
-                console.log('loggedout');
                 window.sessionStorage.removeItem('user_credentials');
-                value.updateUID('null');
+                value.updateUID(null);
               }).catch((error) => {
                 console.log(error.message);
               });
