@@ -28,7 +28,7 @@ export default class Welcome extends React.Component {
 
           const loggedIn = (
             <section className='Welcome'>
-              <h2>Welcome back, {value.state.firstName}!</h2>
+              <h2>Welcome back!</h2>
             </section>
           );
 

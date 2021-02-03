@@ -1,6 +1,8 @@
 // Dependencies
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import firebase from "firebase/app";
+import "firebase/auth";
 
 // Styles
 import './SignUpRoute.css';
@@ -8,32 +10,46 @@ import './SignUpRoute.css';
 // Context
 import Context from './../../context/Context';
 
+
 // Components
 import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
 
 class SignUpRoute extends React.Component {
+
   render() {
     return (
       <Context.Consumer>
         {value => {
+
+        const handleSignUpSubmit = (e, email, pass) => {
+          e.preventDefault()
+          console.log(email, pass);
+          firebase.auth().createUserWithEmailAndPassword(email, pass)
+            .then((userCredential) => {
+              console.log('userCredentialToken', userCredential.refreshToken);
+              console.log('uid', userCredential.uid);
+              // Signed in 
+              window.sessionStorage.setItem('user_credentials', userCredential.user.refreshToken);
+              value.updateUID(userCredential.user.uid);
+              this.props.history.push('/');
+            })
+            .catch((error) => {
+              console.log(error.message);
+            });
+        }
+
           return (
             <>
               <Header />
               <main className='SignUpRoute'>
                 <h2>Sign Up</h2>
-                <form className='signup-form'>
+                <form className='signup-form' onSubmit={(e) => handleSignUpSubmit(e, e.target['sign-up-email'].value, e.target['sign-up-pass'].value)}>
                   <div>
-                    <input type='text' placeholder='First Name' />
+                    <input id='sign-up-email' type='email' placeholder='Email' required />
                   </div>
                   <div>
-                    <input type='text' placeholder='Username' />
-                  </div>
-                  <div>
-                    <input type='password' placeholder='Password' />
-                  </div>
-                  <div>
-                    <input type='passwrd' placeholder='Re-enter Password' />
+                    <input id='sign-up-pass' type='password' placeholder='Password' required />
                   </div>
                   <div>
                     <button type='submit'>Sign Up</button>

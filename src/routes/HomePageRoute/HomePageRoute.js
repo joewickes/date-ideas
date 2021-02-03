@@ -15,6 +15,31 @@ import Footer from './../../components/Footer/Footer';
 
 
 class HomePageRoute extends React.Component {
+  
+  handleGetSomeIdeasClick = (e) => {
+    e.preventDefault();
+
+    console.log('Getting all ideas');
+  }
+
+  handleTryAnotherActivityClick = (e) => {
+    e.preventDefault();
+
+    console.log('Getting activity idea');
+  }
+
+  handleTryAnotherMealClick = (e) => {
+    e.preventDefault();
+
+    console.log('Getting meal idea');
+  }
+
+  handleTryAnotherDessertClick = (e) => {
+    e.preventDefault();
+
+    console.log('Getting desserti idea');
+  }
+
   render() {
     return (
       <Context.Consumer>
@@ -25,7 +50,7 @@ class HomePageRoute extends React.Component {
               <main className='HomePageRoute'>
                 <Welcome />
                 <div className='all-ideas-btn-container'>
-                  <button className='all-ideas-btn reg-btn'>Get Some Ideas</button>
+                  <button onClick={this.handleGetSomeIdeasClick} className='all-ideas-btn reg-btn'>Get Some Ideas</button>
                 </div>
                 <hr />
                 <section className='all-ideas-container'>
@@ -34,7 +59,7 @@ class HomePageRoute extends React.Component {
                       <h2>Activity</h2>
                     </div>
                     <div className='idea-middle'>
-                      <p>Go hiking</p>
+                      <p>{value.state.activity.name}</p>
                     </div>
                     <div className='idea-bottom'>
                       {window.sessionStorage.getItem('user_credentials') ?
@@ -47,7 +72,7 @@ class HomePageRoute extends React.Component {
                         : null
                       }
                       <div className='try-another-btn'>
-                        <button className='reg-btn'>Try Another</button>
+                        <button onClick={this.handleTryAnotherActivityClick} className='reg-btn'>Try Another</button>
                       </div>
                     </div>
                   </div>
@@ -56,7 +81,7 @@ class HomePageRoute extends React.Component {
                       <h2>Meal</h2>
                     </div>
                     <div className='idea-middle'>
-                      <p>Seafood</p>
+                      <p>{value.state.meal.name}</p>
                     </div>
                     <div className='idea-bottom'>
                       {window.sessionStorage.getItem('user_credentials') ?
@@ -69,7 +94,7 @@ class HomePageRoute extends React.Component {
                         : null
                       }
                       <div className='try-another-btn-container'>
-                        <button className='reg-btn'>Try Another</button>
+                        <button onClick={this.handleTryAnotherMealClick} className='reg-btn'>Try Another</button>
                       </div>
                     </div>
                   </div>
@@ -78,7 +103,7 @@ class HomePageRoute extends React.Component {
                       <h2>Dessert</h2>
                     </div>
                     <div className='idea-middle'>
-                      <p>Ice Cream Sundae</p>
+                      <p>{value.state.dessert.name}</p>
                     </div>
                     <div className='idea-bottom'>
                       {window.sessionStorage.getItem('user_credentials') ?
@@ -91,7 +116,7 @@ class HomePageRoute extends React.Component {
                         : null
                       }
                       <div className='try-another-btn'>
-                        <button className='reg-btn'>Try Another</button>
+                        <button onClick={this.handleTryAnotherDessertClick} className='reg-btn'>Try Another</button>
                       </div>
                     </div>
                   </div>
