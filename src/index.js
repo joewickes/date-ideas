@@ -2,6 +2,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
 import reportWebVitals from './reportWebVitals';
 
 // Styles
@@ -13,6 +15,9 @@ import { ContextProvider } from './context/Context';
 // Components
 import App from './components/App/App';
 
+// Env
+const myEnv = dotenv.config();
+dotenvExpand(myEnv);
 
 ReactDOM.render(
   <ContextProvider>

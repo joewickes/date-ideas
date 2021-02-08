@@ -12,13 +12,13 @@ import SignUpRoute from './../../routes/SignUpRoute/SignUpRoute';
 import LogInRoute from './../../routes/LogInRoute/LogInRoute';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBSQVQMVeJYO5FStbvZuri2Uus1uL2TZW4",
-  authDomain: "date-ideas-5a3ee.firebaseapp.com",
-  projectId: "date-ideas-5a3ee",
-  storageBucket: "date-ideas-5a3ee.appspot.com",
-  messagingSenderId: "174058388833",
-  appId: "1:174058388833:web:b9d201549ba4f5bfa01920",
-  measurementId: "G-JY015DGVVC"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
 firebase.initializeApp(firebaseConfig);
