@@ -42,7 +42,7 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input className='checkbox' type='checkbox' />
+                          <input onChange={() => console.log('CHANGED')} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }
@@ -64,7 +64,7 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input className='checkbox' type='checkbox' />
+                          <input onChange={() => console.log('CHANGED')} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }
@@ -86,7 +86,7 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input className='checkbox' type='checkbox' />
+                          <input onChange={() => console.log('CHANGED')} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }
