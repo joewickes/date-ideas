@@ -103,15 +103,26 @@ export class ContextProvider extends React.Component {
     })
 
     const getActivity = async () => {
-      const loggedOutActivities = await apiServices.getLoggedOutActivities();
+      if (!window.sessionStorage.getItem('user_credentials')) {
+        const loggedOutActivities = await apiServices.getLoggedOutActivities();
 
-      this.setState({
-        activity: {
-          id: parseInt(loggedOutActivities.id),
-          name: loggedOutActivities.name,
-          loading: false,
-        },
-      })
+        this.setState({
+          activity: {
+            name: loggedOutActivities.name,
+            loading: false,
+          },
+        })
+      } else if (window.sessionStorage.getItem('user_credentials')) {
+        const loggedInActivities = await apiServices.getLoggedInActivities();
+
+        this.setState({
+          activity: {
+            id: parseInt(loggedInActivities.id),
+            name: loggedInActivities.name,
+            loading: false,
+          },
+        })
+      }
     }
 
     getActivity();
@@ -127,15 +138,26 @@ export class ContextProvider extends React.Component {
     })
 
     const getMeal = async () => {
-      const loggedOutMeals = await apiServices.getLoggedOutMeals();
+      if (!window.sessionStorage.getItem('user_credentials')) {
+        const loggedOutMeals = await apiServices.getLoggedOutMeals();
 
-      this.setState({
-        meal: {
-          id: parseInt(loggedOutMeals.id),
-          name: loggedOutMeals.name,
-          loading: false,
-        },
-      })
+        this.setState({
+          meal: {
+            name: loggedOutMeals.name,
+            loading: false,
+          },
+        })
+      } else if (window.sessionStorage.getItem('user_credentials')) {
+        const loggedInMeals = await apiServices.getLoggedInMeals();
+
+        this.setState({
+          meal: {
+            id: parseInt(loggedInMeals.id),
+            name: loggedInMeals.name,
+            loading: false,
+          },
+        })
+      }
     }
 
     getMeal();
@@ -148,19 +170,32 @@ export class ContextProvider extends React.Component {
       dessert: {
         loading: true,
       }
-    });
+    })
 
-    apiServices.getLoggedOutDesserts()
-      .then(res => {
+    const getDessert = async () => {
+      if (!window.sessionStorage.getItem('user_credentials')) {
+        const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
+
         this.setState({
           dessert: {
-            id: parseInt(res.id),
-            name: res.name,
+            name: loggedOutDesserts.name,
             loading: false,
           },
         })
-      })
-    ;
+      } else if (window.sessionStorage.getItem('user_credentials')) {
+        const loggedInDesserts = await apiServices.getLoggedInDesserts();
+
+        this.setState({
+          dessert: {
+            id: parseInt(loggedInDesserts.id),
+            name: loggedInDesserts.name,
+            loading: false,
+          },
+        })
+      }
+    }
+
+    getDessert();
   }
   
   render() {
