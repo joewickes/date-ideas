@@ -68,6 +68,11 @@
   border-radius: 20px;
 }
 
+.idea-middle p {
+  text-align: center;
+  padding: 15px;
+}
+
 .idea-bottom {
   flex: 1.5;
   display: flex;

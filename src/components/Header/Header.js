@@ -20,7 +20,7 @@ export default class Header extends React.Component {
             firebase.auth().signOut()
               .then(() => {
                 window.sessionStorage.removeItem('user_credentials');
-                value.updateUID(null);
+                window.sessionStorage.removeItem('uid');
               }).catch((error) => {
                 console.log(error.message);
               });
