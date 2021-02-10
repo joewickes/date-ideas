@@ -76,6 +76,71 @@ const apiServices = {
         return response.json();
       })
     ;
+  },
+  findExclusion: (userId, ideaID, category) => {
+    let newCategory = null;
+    if (category === 'Activity') {
+      newCategory = 'activities'
+    } else if (category === 'Meal') {
+      newCategory = 'meals'
+    } else if (category === 'Dessert') {
+      newCategory = 'desserts'
+    }
+
+    console.log('finding exclusion at', userId, ideaID, category)
+
+    return fetch(`http://localhost:8000/api/${newCategory}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({userId: userId, ideaId: ideaID, category: category}),
+    })
+    .then(response => {
+      return response.json();
+    })
+  },
+  addExclusion: (userId, ideaID, category) => {
+    let newCategory = null;
+    if (category === 'activity') {
+      newCategory = 'activities'
+    } else if (category === 'meal') {
+      newCategory = 'meals'
+    } else if (category === 'dessert') {
+      newCategory = 'desserts'
+    }
+
+    console.log('adding exclusion at', userId, ideaID, category)
+    
+    return fetch(`http://localhost:8000/api/${newCategory}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({userId: userId, ideaId: ideaID, category: category}),
+    })
+    .then(response => {
+      return response.json();
+    })
+  },
+  deleteExclusion: (ideaID, category) => {
+    let newCategory = null;
+    if (category === 'activity') {
+      newCategory = 'activities'
+    } else if (category === 'meal') {
+      newCategory = 'meals'
+    } else if (category === 'dessert') {
+      newCategory = 'desserts'
+    }
+
+    console.log('deleting exclusion at', ideaID, category)
+
+    return fetch(`http://localhost:8000/api/${newCategory}/${ideaID}`, {
+      method: 'DELETE',
+    })
+    .then(response => {
+      return response.json();
+    })
   }
 }
 

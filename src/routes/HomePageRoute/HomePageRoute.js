@@ -34,7 +34,7 @@ class HomePageRoute extends React.Component {
                       <h2>Activity</h2>
                     </div>
                     <div className='idea-middle'>
-                      { value.state.activity.loading ? <p>Loading...</p> : <p>{value.state.activity.name}</p>}
+                      { value.state.activity.loading ? <p>Loading...</p> : <p style={value.state.activity.strikthrough ? {textDecoration: 'line-through'}: null}>{value.state.activity.name}</p>}
                     </div>
                     <div className='idea-bottom'>
                       {window.sessionStorage.getItem('user_credentials') ?
@@ -42,7 +42,7 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input onChange={() => console.log('CHANGED')} className='checkbox' type='checkbox' />
+                          <input onChange={() => value.handleExclusionToggle(window.sessionStorage.getItem('uid'), value.state.activity.id, 'activity')} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }
@@ -56,7 +56,7 @@ class HomePageRoute extends React.Component {
                       <h2>Meal</h2>
                     </div>
                     <div className='idea-middle'>
-                      {value.state.meal.loading ? <p>Loading...</p> : <p>{value.state.meal.name}</p>}
+                      { value.state.meal.loading ? <p>Loading...</p> : <p style={value.state.meal.strikthrough ? {textDecoration: 'line-through'}: null}>{value.state.meal.name}</p>}
                     </div>
                     <div className='idea-bottom'>
                       {window.sessionStorage.getItem('user_credentials') ?
@@ -64,7 +64,7 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input onChange={() => console.log('CHANGED')} className='checkbox' type='checkbox' />
+                          <input onChange={() => value.handleExclusionToggle(window.sessionStorage.getItem('uid'), value.state.activity.id, 'meal')} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }
@@ -78,7 +78,7 @@ class HomePageRoute extends React.Component {
                       <h2>Dessert</h2>
                     </div>
                     <div className='idea-middle'>
-                      { value.state.dessert.loading ? <p>Loading...</p> : <p>{value.state.dessert.name}</p> }
+                      { value.state.dessert.loading ? <p>Loading...</p> : <p style={value.state.dessert.strikthrough ? {textDecoration: 'line-through'}: null}>{value.state.dessert.name}</p>}
                     </div>
                     <div className='idea-bottom'>
                       {window.sessionStorage.getItem('user_credentials') ?
@@ -86,7 +86,7 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input onChange={() => console.log('CHANGED')} className='checkbox' type='checkbox' />
+                          <input onChange={() => value.handleExclusionToggle(window.sessionStorage.getItem('uid'), value.state.activity.id, 'dessert')} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }
