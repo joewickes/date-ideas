@@ -13,7 +13,6 @@ export class ContextProvider extends React.Component {
     activity: {
       id: null,
       name: null,
-      category: null,
       loading: false,
       strikethrough: false,
       checked: false,
@@ -21,7 +20,6 @@ export class ContextProvider extends React.Component {
     meal: {
       id: null,
       name: null,
-      category: null,
       loading: false,
       strikethrough: false,
       checked: false,
@@ -29,7 +27,6 @@ export class ContextProvider extends React.Component {
     dessert: {
       id: null,
       name: null,
-      category: null,
       loading: false,
       strikethrough: false,
       checked: false,
@@ -247,7 +244,6 @@ export class ContextProvider extends React.Component {
         [category]: {
           id: this.state[category].id,
           name: this.state[category].name,
-          category: this.state[category].category,
           loading: this.state[category].loading,
           checked: false,
           strikethrough: false,
@@ -258,7 +254,6 @@ export class ContextProvider extends React.Component {
         [category]: {
           id: this.state[category].id,
           name: this.state[category].name,
-          category: this.state[category].category,
           loading: this.state[category].loading,
           checked: true,
           strikethrough: true,

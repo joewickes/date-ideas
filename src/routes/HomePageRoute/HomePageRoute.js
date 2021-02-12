@@ -34,7 +34,7 @@ class HomePageRoute extends React.Component {
                       <h2>Activity</h2>
                     </div>
                     <div className='idea-middle'>
-                      { value.state.activity.loading ? <p>Loading...</p> : <p style={value.state.activity.strikthrough ? {textDecoration: 'line-through'}: null}>{value.state.activity.name}</p>}
+                      { value.state.activity.loading ? <p>Loading...</p> : <p style={value.state.activity.strikethrough ? {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}: null}>{value.state.activity.name}</p>}
                     </div>
                     <div className='idea-bottom'>
                       {window.sessionStorage.getItem('user_credentials') ?
@@ -57,7 +57,7 @@ class HomePageRoute extends React.Component {
                       <h2>Meal</h2>
                     </div>
                     <div className='idea-middle'>
-                      { value.state.meal.loading ? <p>Loading...</p> : <p style={value.state.meal.strikthrough ? {textDecoration: 'line-through'}: null}>{value.state.meal.name}</p>}
+                      { value.state.meal.loading ? <p>Loading...</p> : <p style={value.state.meal.strikethrough ? {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}: null}>{value.state.meal.name}</p>}
                     </div>
                     <div className='idea-bottom'>
                       {window.sessionStorage.getItem('user_credentials') ?
@@ -80,7 +80,7 @@ class HomePageRoute extends React.Component {
                       <h2>Dessert</h2>
                     </div>
                     <div className='idea-middle'>
-                      { value.state.dessert.loading ? <p>Loading...</p> : <p style={value.state.dessert.strikthrough ? {textDecoration: 'line-through'}: null}>{value.state.dessert.name}</p>}
+                      { value.state.dessert.loading ? <p>Loading...</p> : <p style={value.state.dessert.strikethrough ? {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}: null}>{value.state.dessert.name}</p>}
                     </div>
                     <div className='idea-bottom'>
                       {window.sessionStorage.getItem('user_credentials') ?
