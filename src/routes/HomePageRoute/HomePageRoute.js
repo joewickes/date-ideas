@@ -42,7 +42,8 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input checked={value.state.activity.checked ? 'checked': null} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.activity.id, 'activity')} className='checkbox' type='checkbox' />
+                          {console.log(value.state.activity)}
+                          <input checked={value.state.activity.checked ? 'checked' : false} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.activity.id, 'activity', value.state.activity.checked)} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }
@@ -64,7 +65,8 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input checked={value.state.meal.checked ? 'checked': null} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.meal.id, 'meal')} className='checkbox' type='checkbox' />
+                          {console.log(value.state.meal)}
+                          <input checked={value.state.meal.checked ? 'checked' : false} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.meal.id, 'meal', value.state.meal.checked)} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }
@@ -86,7 +88,8 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input checked={value.state.dessert.checked ? 'checked': null} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.dessert.id, 'dessert')} className='checkbox' type='checkbox' />
+                          {console.log(value.state.dessert)}
+                          <input checked={value.state.dessert.checked ? 'checked' : false} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.dessert.id, 'dessert', value.state.dessert.checked)} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }

@@ -125,6 +125,7 @@ export class ContextProvider extends React.Component {
         loading: true,
         strikethrough: false,
         checked: false,
+        strikethrough: false,
       }
     })
 
@@ -166,6 +167,7 @@ export class ContextProvider extends React.Component {
         loading: true,
         strikethrough: false,
         checked: false,
+        strikethrough: false,
       }
     })
 
@@ -187,6 +189,8 @@ export class ContextProvider extends React.Component {
             id: parseInt(loggedInMeals.id),
             name: loggedInMeals.name,
             loading: false,
+            checked: false,
+            strikethrough: false,
           },
         })
       }
@@ -203,6 +207,7 @@ export class ContextProvider extends React.Component {
         loading: true,
         strikethrough: false,
         checked: false,
+        strikethrough: false,
       }
     })
 
@@ -224,6 +229,8 @@ export class ContextProvider extends React.Component {
             id: parseInt(loggedInDesserts.id),
             name: loggedInDesserts.name,
             loading: false,
+            checked: false,
+            strikethrough: false,
           },
         })
       }
@@ -232,8 +239,32 @@ export class ContextProvider extends React.Component {
     getDessert();
   }
 
-  handleExclusionToggle = (e, userId, ideaID, category) => {
-    console.log(category);
+  handleExclusionToggle = (e, userId, ideaID, category, checked) => {
+    console.log(this.state[category].id);
+
+    if (checked) {
+      this.setState({
+        [category]: {
+          id: this.state[category].id,
+          name: this.state[category].name,
+          category: this.state[category].category,
+          loading: this.state[category].loading,
+          checked: false,
+          strikethrough: false,
+        }
+      })
+    } else if (!checked) {
+      this.setState({
+        [category]: {
+          id: this.state[category].id,
+          name: this.state[category].name,
+          category: this.state[category].category,
+          loading: this.state[category].loading,
+          checked: true,
+          strikethrough: true,
+        }
+      })
+    }
 
     apiServices.findExclusion(userId, ideaID, category)
       .then(result => {
