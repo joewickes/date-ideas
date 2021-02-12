@@ -42,7 +42,7 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input onChange={() => value.handleExclusionToggle(window.sessionStorage.getItem('uid'), value.state.activity.id, 'activity')} className='checkbox' type='checkbox' />
+                          <input checked={value.state.activity.checked ? 'checked': null} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.activity.id, 'activity')} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }
@@ -64,7 +64,7 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input onChange={() => value.handleExclusionToggle(window.sessionStorage.getItem('uid'), value.state.activity.id, 'meal')} className='checkbox' type='checkbox' />
+                          <input checked={value.state.meal.checked ? 'checked': null} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.meal.id, 'meal')} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }
@@ -86,7 +86,7 @@ class HomePageRoute extends React.Component {
                           <label htmlFor='checkbox'>
                             Already tried this?
                           </label>
-                          <input onChange={() => value.handleExclusionToggle(window.sessionStorage.getItem('uid'), value.state.activity.id, 'dessert')} className='checkbox' type='checkbox' />
+                          <input checked={value.state.dessert.checked ? 'checked': null} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.dessert.id, 'dessert')} className='checkbox' type='checkbox' />
                         </div> 
                         : null
                       }

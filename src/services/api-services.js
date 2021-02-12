@@ -77,26 +77,27 @@ const apiServices = {
       })
     ;
   },
-  findExclusion: (userId, ideaID, category) => {
+  findExclusion: (userId, categoryId, category) => {
     let newCategory = null;
-    if (category === 'Activity') {
+    if (category === 'activity') {
       newCategory = 'activities'
-    } else if (category === 'Meal') {
+    } else if (category === 'meal') {
       newCategory = 'meals'
-    } else if (category === 'Dessert') {
+    } else if (category === 'dessert') {
       newCategory = 'desserts'
     }
 
-    console.log('finding exclusion at', userId, ideaID, category)
+    console.log('finding exclusion at', userId, categoryId, newCategory)
 
-    return fetch(`http://localhost:8000/api/${newCategory}`, {
+    return fetch(`http://localhost:8000/api/excluded`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify({userId: userId, ideaId: ideaID, category: category}),
+      body: JSON.stringify({userId: userId, categoryId: categoryId, category: category}),
     })
     .then(response => {
+      console.log('happened');
       return response.json();
     })
   },
@@ -112,7 +113,7 @@ const apiServices = {
 
     console.log('adding exclusion at', userId, ideaID, category)
     
-    return fetch(`http://localhost:8000/api/${newCategory}`, {
+    return fetch(`http://localhost:8000/api/excluded`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -123,7 +124,7 @@ const apiServices = {
       return response.json();
     })
   },
-  deleteExclusion: (ideaID, category) => {
+  deleteExclusion: (excludedID, category) => {
     let newCategory = null;
     if (category === 'activity') {
       newCategory = 'activities'
@@ -133,9 +134,9 @@ const apiServices = {
       newCategory = 'desserts'
     }
 
-    console.log('deleting exclusion at', ideaID, category)
+    console.log('deleting exclusion at', excludedID, category)
 
-    return fetch(`http://localhost:8000/api/${newCategory}/${ideaID}`, {
+    return fetch(`http://localhost:8000/api/excluded/${excludedID}`, {
       method: 'DELETE',
     })
     .then(response => {

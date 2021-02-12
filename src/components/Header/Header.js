@@ -21,6 +21,7 @@ export default class Header extends React.Component {
               .then(() => {
                 window.sessionStorage.removeItem('user_credentials');
                 window.sessionStorage.removeItem('uid');
+                value.handleGetSomeIdeasClick();
               }).catch((error) => {
                 console.log(error.message);
               });
@@ -33,7 +34,7 @@ export default class Header extends React.Component {
               </section>
               <section className='header-right'>
                 <ul className='login-signup-list'>
-                  {window.sessionStorage.user_credentials 
+                  {window.sessionStorage.getItem('user_credentials') 
                   ? (<li className='logout-text' onClick={logOutUID}>Logout</li>)
                   : (<>
                       <li className='login-text'><NavLink to='/login'>Log In</NavLink></li>

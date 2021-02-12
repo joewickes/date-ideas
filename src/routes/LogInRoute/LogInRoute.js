@@ -13,6 +13,7 @@ import Context from './../../context/Context';
 // Components
 import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
+import apiServices from '../../services/api-services';
 
 class LogInRoute extends React.Component {
   render() {
@@ -22,10 +23,12 @@ class LogInRoute extends React.Component {
           const handleLogInSubmit = (e, email, pass) => {
             e.preventDefault();
             firebase.auth().signInWithEmailAndPassword(email, pass)
-              .then((userCredential) => {
+              .then(async (userCredential) => {
                 window.sessionStorage.setItem('user_credentials', userCredential.user.refreshToken);
                 window.sessionStorage.setItem('uid', userCredential.user.uid);
                 this.props.history.push('/');
+
+                value.handleGetSomeIdeasClick();
               })
               .catch((error) => {
                 console.log(error.message);

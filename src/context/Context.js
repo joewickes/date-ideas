@@ -15,26 +15,31 @@ export class ContextProvider extends React.Component {
       name: null,
       category: null,
       loading: false,
-      strikethrough: false
+      strikethrough: false,
+      checked: false,
     },
     meal: {
       id: null,
       name: null,
       category: null,
       loading: false,
-      strikethrough: false
+      strikethrough: false,
+      checked: false,
     },
     dessert: {
       id: null,
       name: null,
       category: null,
       loading: false,
-      strikethrough: false
+      strikethrough: false,
+      checked: false,
     },
   }
 
   handleGetSomeIdeasClick = (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
 
     this.setState({
       activity: {
@@ -58,17 +63,20 @@ export class ContextProvider extends React.Component {
           activity: {
             name: loggedOutActivities.name,
             loading: false,
-            strikethrough: false
+            strikethrough: false,
+            checked: false,
           },
           meal: {
             name: loggedOutMeals.name,
             loading: false,
-            strikethrough: false
+            strikethrough: false,
+            checked: false,
           },
           dessert: {
             name: loggedOutDesserts.name,
             loading: false,
-            strikethrough: false
+            strikethrough: false,
+            checked: false,
           }
         })
       } else if (window.sessionStorage.getItem('user_credentials')) {
@@ -76,24 +84,31 @@ export class ContextProvider extends React.Component {
         const loggedInMeals = await apiServices.getLoggedInMeals(window.sessionStorage.getItem('uid'));
         const loggedInDesserts = await apiServices.getLoggedInDesserts(window.sessionStorage.getItem('uid'));
 
+        console.log(loggedInActivities);
+        console.log(loggedInMeals);
+        console.log(loggedInDesserts);
+
         this.setState({
           activity: {
             id: parseInt(loggedInActivities.id),
             name: loggedInActivities.name,
             loading: false,
-            strikethrough: false
+            strikethrough: false,
+            checked: false,
           },
           meal: {
             id: parseInt(loggedInMeals.id),
             name: loggedInMeals.name,
             loading: false,
-            strikethrough: false
+            strikethrough: false,
+            checked: false,
           },
           dessert: {
             id: parseInt(loggedInDesserts.id),
             name: loggedInDesserts.name,
             loading: false,
-            strikethrough: false
+            strikethrough: false,
+            checked: false,
           }
         })
       }
@@ -108,7 +123,8 @@ export class ContextProvider extends React.Component {
     this.setState({
       activity: {
         loading: true,
-        strikethrough: false
+        strikethrough: false,
+        checked: false,
       }
     })
 
@@ -120,7 +136,8 @@ export class ContextProvider extends React.Component {
           activity: {
             name: loggedOutActivities.name,
             loading: false,
-            strikethrough: false
+            strikethrough: false,
+            checked: false,
           },
         })
       } else if (window.sessionStorage.getItem('user_credentials')) {
@@ -131,7 +148,8 @@ export class ContextProvider extends React.Component {
             id: parseInt(loggedInActivities.id),
             name: loggedInActivities.name,
             loading: false,
-            strikethrough: false
+            strikethrough: false,
+            checked: false,
           },
         })
       }
@@ -146,6 +164,8 @@ export class ContextProvider extends React.Component {
     this.setState({
       meal: {
         loading: true,
+        strikethrough: false,
+        checked: false,
       }
     })
 
@@ -181,6 +201,8 @@ export class ContextProvider extends React.Component {
     this.setState({
       dessert: {
         loading: true,
+        strikethrough: false,
+        checked: false,
       }
     })
 
@@ -210,7 +232,8 @@ export class ContextProvider extends React.Component {
     getDessert();
   }
 
-  handleExclusionToggle = (userId, ideaID, category) => {
+  handleExclusionToggle = (e, userId, ideaID, category) => {
+    console.log(category);
 
     apiServices.findExclusion(userId, ideaID, category)
       .then(result => {
@@ -219,6 +242,7 @@ export class ContextProvider extends React.Component {
             .then(() => {
               this.setState({[category]: {
                 strikethrough: true,
+                checked: false,
               }})
             })
         } else if (result.status === 200) {
@@ -226,6 +250,7 @@ export class ContextProvider extends React.Component {
             .then(() => {
               this.setState({[category]: {
                 strikethrough: false,
+                checked: false,
               }})
             })
         }
@@ -241,7 +266,7 @@ export class ContextProvider extends React.Component {
         handleTryAnotherActivityClick: this.handleTryAnotherActivityClick,
         handleTryAnotherMealClick: this.handleTryAnotherMealClick,
         handleTryAnotherDessertClick: this.handleTryAnotherDessertClick,
-        handleExclusionToggle: this.handleExclusionToggle
+        handleExclusionToggle: this.handleExclusionToggle,
       }}>
         {this.props.children}
       </Context.Provider>
