@@ -31,7 +31,7 @@ class SignUpRoute extends React.Component {
               this.props.history.push('/');
             })
             .catch((error) => {
-              console.log(error.message);
+              console.log(error);
             });
         }
 

@@ -31,7 +31,7 @@ class LogInRoute extends React.Component {
                 value.handleGetSomeIdeasClick();
               })
               .catch((error) => {
-                console.log(error.message);
+                console.log(error);
               });
           }
 

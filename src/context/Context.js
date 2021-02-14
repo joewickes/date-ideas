@@ -259,7 +259,6 @@ export class ContextProvider extends React.Component {
     apiServices.findExclusion(userId, ideaID, category)
       .then(result => {
         if (result.status === 404) {
-          console.log('adding exclusion', userId, ideaID, category);
           apiServices.addExclusion(userId, ideaID, category)
             .then(() => {
               this.setState({[category]: {
@@ -268,7 +267,6 @@ export class ContextProvider extends React.Component {
               }})
             })
         } else if (result.status === 200) {
-          console.log('deletingExclusion', result.body.id, category);
           apiServices.deleteExclusion(result.body.id, category)
             .then(() => {
               this.setState({[category]: {

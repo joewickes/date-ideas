@@ -23,7 +23,7 @@ export default class Header extends React.Component {
                 window.sessionStorage.removeItem('uid');
                 value.handleGetSomeIdeasClick();
               }).catch((error) => {
-                console.log(error.message);
+                console.log(error);
               });
           }
 

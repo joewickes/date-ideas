@@ -87,8 +87,6 @@ const apiServices = {
       newCategory = 'desserts'
     }
 
-    console.log('finding exclusion at', userId, categoryId, newCategory)
-
     return fetch(`http://localhost:8000/api/excluded`, {
       method: 'POST',
       headers: {
@@ -103,48 +101,6 @@ const apiServices = {
       console.log(error);
     })
   },
-  addExclusion: (userId, ideaID, category) => {
-    let newCategory = null;
-    if (category === 'activity') {
-      newCategory = 'activities'
-    } else if (category === 'meal') {
-      newCategory = 'meals'
-    } else if (category === 'dessert') {
-      newCategory = 'desserts'
-    }
-
-    console.log('adding exclusion at', userId, ideaID, category)
-    
-    return fetch(`http://localhost:8000/api/excluded`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({userId: userId, ideaId: ideaID, category: category}),
-    })
-    .then(response => {
-      return response.json();
-    })
-  },
-  deleteExclusion: (excludedID, category) => {
-    let newCategory = null;
-    if (category === 'activity') {
-      newCategory = 'activities'
-    } else if (category === 'meal') {
-      newCategory = 'meals'
-    } else if (category === 'dessert') {
-      newCategory = 'desserts'
-    }
-
-    console.log('deleting exclusion at', excludedID, category)
-
-    return fetch(`http://localhost:8000/api/excluded/${excludedID}`, {
-      method: 'DELETE',
-    })
-    .then(response => {
-      return response.json();
-    })
-  }
 }
 
 export default apiServices;
