@@ -37,7 +37,7 @@ class HomePageRoute extends React.Component {
                       { value.state.activity.loading ? <p>Loading...</p> : <p style={value.state.activity.strikethrough ? {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}: null}>{value.state.activity.name}</p>}
                     </div>
                     <div className='idea-bottom'>
-                      {window.sessionStorage.getItem('user_credentials') ?
+                      {window.sessionStorage.getItem('user_credentials') && value.state.activity.name ?
                         <div className='already-tried-checkbox-container'>
                           <label htmlFor='checkbox'>
                             Already tried this?
@@ -59,7 +59,7 @@ class HomePageRoute extends React.Component {
                       { value.state.meal.loading ? <p>Loading...</p> : <p style={value.state.meal.strikethrough ? {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}: null}>{value.state.meal.name}</p>}
                     </div>
                     <div className='idea-bottom'>
-                      {window.sessionStorage.getItem('user_credentials') ?
+                      {window.sessionStorage.getItem('user_credentials') && value.state.meal.name ?
                         <div className='already-tried-checkbox-container'>
                           <label htmlFor='checkbox'>
                             Already tried this?
@@ -81,7 +81,7 @@ class HomePageRoute extends React.Component {
                       { value.state.dessert.loading ? <p>Loading...</p> : <p style={value.state.dessert.strikethrough ? {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}: null}>{value.state.dessert.name}</p>}
                     </div>
                     <div className='idea-bottom'>
-                      {window.sessionStorage.getItem('user_credentials') ?
+                      {window.sessionStorage.getItem('user_credentials') && value.state.dessert.name ?
                         <div className='already-tried-checkbox-container'>
                           <label htmlFor='checkbox'>
                             Already tried this?
