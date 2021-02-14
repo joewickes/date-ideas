@@ -97,8 +97,10 @@ const apiServices = {
       body: JSON.stringify({userId: userId, categoryId: categoryId, category: category}),
     })
     .then(response => {
-      console.log('happened');
       return response.json();
+    })
+    .catch(error => {
+      console.log(error);
     })
   },
   addExclusion: (userId, ideaID, category) => {

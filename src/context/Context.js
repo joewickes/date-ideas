@@ -77,13 +77,9 @@ export class ContextProvider extends React.Component {
           }
         })
       } else if (window.sessionStorage.getItem('user_credentials')) {
-        const loggedInActivities = await apiServices.getLoggedInActivities(window.sessionStorage.getItem('uid'));
-        const loggedInMeals = await apiServices.getLoggedInMeals(window.sessionStorage.getItem('uid'));
-        const loggedInDesserts = await apiServices.getLoggedInDesserts(window.sessionStorage.getItem('uid'));
-
-        console.log(loggedInActivities);
-        console.log(loggedInMeals);
-        console.log(loggedInDesserts);
+        const loggedInActivities = await apiServices.getLoggedInActivities();
+        const loggedInMeals = await apiServices.getLoggedInMeals();
+        const loggedInDesserts = await apiServices.getLoggedInDesserts();
 
         this.setState({
           activity: {
@@ -237,7 +233,6 @@ export class ContextProvider extends React.Component {
   }
 
   handleExclusionToggle = (e, userId, ideaID, category, checked) => {
-    console.log(this.state[category].id);
 
     if (checked) {
       this.setState({
@@ -264,6 +259,7 @@ export class ContextProvider extends React.Component {
     apiServices.findExclusion(userId, ideaID, category)
       .then(result => {
         if (result.status === 404) {
+          console.log('adding exclusion', userId, ideaID, category);
           apiServices.addExclusion(userId, ideaID, category)
             .then(() => {
               this.setState({[category]: {
@@ -272,6 +268,7 @@ export class ContextProvider extends React.Component {
               }})
             })
         } else if (result.status === 200) {
+          console.log('deletingExclusion', result.body.id, category);
           apiServices.deleteExclusion(result.body.id, category)
             .then(() => {
               this.setState({[category]: {
