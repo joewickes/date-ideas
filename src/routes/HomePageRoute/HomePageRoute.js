@@ -28,6 +28,7 @@ class HomePageRoute extends React.Component {
                   <button onClick={value.handleGetSomeIdeasClick} className='all-ideas-btn reg-btn'>Get Some Ideas</button>
                 </div>
                 <hr />
+                <p style={{color: 'red', marginTop: '50px', textAlign: 'center'}}>{value.state.error}</p>
                 <section className='all-ideas-container'>
                   <div className='idea'>
                     <div className='idea-top'>

@@ -31,6 +31,7 @@ export class ContextProvider extends React.Component {
       strikethrough: false,
       checked: false,
     },
+    error: null,
   }
 
   handleGetSomeIdeasClick = (e) => {
@@ -47,12 +48,13 @@ export class ContextProvider extends React.Component {
       },
       dessert: {
         loading: true,
-      }
+      },
+      error: null,
     })
 
     const getAllIdeas = async () => {
       if (!window.sessionStorage.getItem('user_credentials')) {
-        const loggedOutActivities = await apiServices.getLoggedOutActivities();
+        try {const loggedOutActivities = await apiServices.getLoggedOutActivities();
         const loggedOutMeals = await apiServices.getLoggedOutMeals();
         const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
 
@@ -75,9 +77,11 @@ export class ContextProvider extends React.Component {
             strikethrough: false,
             checked: false,
           }
-        })
+        })} catch (error) {
+          this.setState({error: 'Whoops! Looks like we can\'t grab any ideas right now!'})
+        }
       } else if (window.sessionStorage.getItem('user_credentials')) {
-        const loggedInActivities = await apiServices.getLoggedInActivities();
+       try {const loggedInActivities = await apiServices.getLoggedInActivities();
         const loggedInMeals = await apiServices.getLoggedInMeals();
         const loggedInDesserts = await apiServices.getLoggedInDesserts();
 
@@ -103,7 +107,9 @@ export class ContextProvider extends React.Component {
             strikethrough: false,
             checked: false,
           }
-        })
+        })} catch (error) {
+          this.setState({error: 'Whoops! Looks like we can\'t grab any ideas right now!'})
+        }
       }
     }
 
@@ -118,12 +124,13 @@ export class ContextProvider extends React.Component {
         loading: true,
         strikethrough: false,
         checked: false,
-      }
+      },
+      error: null,
     })
 
     const getActivity = async () => {
       if (!window.sessionStorage.getItem('user_credentials')) {
-        const loggedOutActivities = await apiServices.getLoggedOutActivities();
+        try {const loggedOutActivities = await apiServices.getLoggedOutActivities();
 
         this.setState({
           activity: {
@@ -132,9 +139,11 @@ export class ContextProvider extends React.Component {
             strikethrough: false,
             checked: false,
           },
-        })
+        })} catch (error) {
+          this.setState({error: 'Whoops! Looks like we can\'t grab any activities right now!'})
+        }
       } else if (window.sessionStorage.getItem('user_credentials')) {
-        const loggedInActivities = await apiServices.getLoggedInActivities();
+        try {const loggedInActivities = await apiServices.getLoggedInActivities();
 
         this.setState({
           activity: {
@@ -144,7 +153,9 @@ export class ContextProvider extends React.Component {
             strikethrough: false,
             checked: false,
           },
-        })
+        })} catch (error) {
+          this.setState({error: 'Whoops! Looks like we can\'t grab any activities right now!'})
+        }
       }
     }
 
@@ -159,21 +170,24 @@ export class ContextProvider extends React.Component {
         loading: true,
         strikethrough: false,
         checked: false,
-      }
+      },
+      error: null,
     })
 
     const getMeal = async () => {
       if (!window.sessionStorage.getItem('user_credentials')) {
-        const loggedOutMeals = await apiServices.getLoggedOutMeals();
+        try {const loggedOutMeals = await apiServices.getLoggedOutMeals();
 
         this.setState({
           meal: {
             name: loggedOutMeals.name,
             loading: false,
           },
-        })
+        })} catch (error) {
+          this.setState({error: 'Whoops! Looks like we can\'t grab any meals right now!'})
+        }
       } else if (window.sessionStorage.getItem('user_credentials')) {
-        const loggedInMeals = await apiServices.getLoggedInMeals();
+        try {const loggedInMeals = await apiServices.getLoggedInMeals();
 
         this.setState({
           meal: {
@@ -183,7 +197,9 @@ export class ContextProvider extends React.Component {
             checked: false,
             strikethrough: false,
           },
-        })
+        })} catch (error) {
+          this.setState({error: 'Whoops! Looks like we can\'t grab any meals right now!'})
+        }
       }
     }
 
@@ -198,21 +214,24 @@ export class ContextProvider extends React.Component {
         loading: true,
         strikethrough: false,
         checked: false,
-      }
+      },
+      error: null,
     })
 
     const getDessert = async () => {
       if (!window.sessionStorage.getItem('user_credentials')) {
-        const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
+        try {const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
 
         this.setState({
           dessert: {
             name: loggedOutDesserts.name,
             loading: false,
           },
-        })
+        })} catch (error) {
+          this.setState({error: 'Whoops! Looks like we can\'t grab any desserts right now!'})
+        }
       } else if (window.sessionStorage.getItem('user_credentials')) {
-        const loggedInDesserts = await apiServices.getLoggedInDesserts();
+        try {const loggedInDesserts = await apiServices.getLoggedInDesserts();
 
         this.setState({
           dessert: {
@@ -222,7 +241,9 @@ export class ContextProvider extends React.Component {
             checked: false,
             strikethrough: false,
           },
-        })
+        })} catch (error) {
+          this.setState({error: 'Whoops! Looks like we can\'t grab any desserts right now!'})
+        }
       }
     }
 
@@ -239,6 +260,7 @@ export class ContextProvider extends React.Component {
           loading: this.state[category].loading,
           checked: false,
           strikethrough: false,
+          error: null,
         }
       })
     } else if (!checked) {
@@ -249,6 +271,7 @@ export class ContextProvider extends React.Component {
           loading: this.state[category].loading,
           checked: true,
           strikethrough: true,
+          error: null,
         }
       })
     }
@@ -273,6 +296,10 @@ export class ContextProvider extends React.Component {
             })
         }
       })
+      .catch(error => {
+        this.setState({error: 'Whoops! Looks like we can\'t check off any ideas right now!'})
+      })
+    ;
   }
   
   render() {
