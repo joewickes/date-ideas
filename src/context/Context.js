@@ -54,7 +54,8 @@ export class ContextProvider extends React.Component {
 
     const getAllIdeas = async () => {
       if (!window.sessionStorage.getItem('user_credentials')) {
-        try {const loggedOutActivities = await apiServices.getLoggedOutActivities();
+        try {
+          const loggedOutActivities = await apiServices.getLoggedOutActivities();
         const loggedOutMeals = await apiServices.getLoggedOutMeals();
         const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
 
@@ -81,7 +82,8 @@ export class ContextProvider extends React.Component {
           this.setState({error: 'Whoops! Looks like we can\'t grab any ideas right now!'})
         }
       } else if (window.sessionStorage.getItem('user_credentials')) {
-       try {const loggedInActivities = await apiServices.getLoggedInActivities();
+       try {
+         const loggedInActivities = await apiServices.getLoggedInActivities();
         const loggedInMeals = await apiServices.getLoggedInMeals();
         const loggedInDesserts = await apiServices.getLoggedInDesserts();
 
@@ -130,7 +132,8 @@ export class ContextProvider extends React.Component {
 
     const getActivity = async () => {
       if (!window.sessionStorage.getItem('user_credentials')) {
-        try {const loggedOutActivities = await apiServices.getLoggedOutActivities();
+        try {
+          const loggedOutActivities = await apiServices.getLoggedOutActivities();
 
         this.setState({
           activity: {
@@ -143,7 +146,8 @@ export class ContextProvider extends React.Component {
           this.setState({error: 'Whoops! Looks like we can\'t grab any activities right now!'})
         }
       } else if (window.sessionStorage.getItem('user_credentials')) {
-        try {const loggedInActivities = await apiServices.getLoggedInActivities();
+        try {
+          const loggedInActivities = await apiServices.getLoggedInActivities();
 
         this.setState({
           activity: {
@@ -176,7 +180,8 @@ export class ContextProvider extends React.Component {
 
     const getMeal = async () => {
       if (!window.sessionStorage.getItem('user_credentials')) {
-        try {const loggedOutMeals = await apiServices.getLoggedOutMeals();
+        try {
+          const loggedOutMeals = await apiServices.getLoggedOutMeals();
 
         this.setState({
           meal: {
@@ -187,7 +192,8 @@ export class ContextProvider extends React.Component {
           this.setState({error: 'Whoops! Looks like we can\'t grab any meals right now!'})
         }
       } else if (window.sessionStorage.getItem('user_credentials')) {
-        try {const loggedInMeals = await apiServices.getLoggedInMeals();
+        try {
+          const loggedInMeals = await apiServices.getLoggedInMeals();
 
         this.setState({
           meal: {
@@ -220,7 +226,8 @@ export class ContextProvider extends React.Component {
 
     const getDessert = async () => {
       if (!window.sessionStorage.getItem('user_credentials')) {
-        try {const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
+        try {
+          const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
 
         this.setState({
           dessert: {
@@ -231,7 +238,8 @@ export class ContextProvider extends React.Component {
           this.setState({error: 'Whoops! Looks like we can\'t grab any desserts right now!'})
         }
       } else if (window.sessionStorage.getItem('user_credentials')) {
-        try {const loggedInDesserts = await apiServices.getLoggedInDesserts();
+        try {
+          const loggedInDesserts = await apiServices.getLoggedInDesserts();
 
         this.setState({
           dessert: {
@@ -278,26 +286,13 @@ export class ContextProvider extends React.Component {
 
     apiServices.findExclusion(userId, ideaID, category)
       .then(result => {
-        if (result.status === 404) {
-          apiServices.addExclusion(userId, ideaID, category)
-            .then(() => {
-              this.setState({[category]: {
-                strikethrough: true,
-                checked: false,
-              }})
-            })
-        } else if (result.status === 200) {
-          apiServices.deleteExclusion(result.body.id, category)
-            .then(() => {
-              this.setState({[category]: {
-                strikethrough: false,
-                checked: false,
-              }})
-            })
-        }
+        console.log('got the thing', result);
       })
-      .catch(error => {
-        this.setState({error: 'Whoops! Looks like we can\'t check off any ideas right now!'})
+      .catch(err => {
+        console.log('errrrrr', err);
+        if (err) {
+          this.setState({error: 'Whoops! Looks like we can\'t check off any ideas right now!'});
+        }
       })
     ;
   }

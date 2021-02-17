@@ -79,6 +79,8 @@ const apiServices = {
   },
   findExclusion: (userId, categoryId, category) => {
 
+    console.log(`find exclusion at ${userId} ${categoryId} ${category}`)
+
     return fetch(`https://radiant-caverns-24681.herokuapp.com/api/excluded`, {
       method: 'POST',
       headers: {
@@ -87,10 +89,11 @@ const apiServices = {
       body: JSON.stringify({userId: userId, categoryId: categoryId, category: category}),
     })
     .then(response => {
-      return response.json();
+      console.log('responseasdf', response);
+      return response;
     })
     .catch(error => {
-      console.log(error);
+      console.log('error', error);
     })
   },
 }
