@@ -33,6 +33,7 @@ class SignUpRoute extends React.Component {
               window.sessionStorage.setItem('user_credentials', userCredential.user.refreshToken);
               window.sessionStorage.setItem('uid', userCredential.user.uid);
               this.props.history.push('/');
+              value.handleGetSomeIdeasClick();
             })
             .catch((error) => {
               this.setState({error: error.message})
