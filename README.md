@@ -1,8 +1,8 @@
 # Date Ideas
 
-# MovieRec
+## Live Link: https://date-ideas.vercel.app/
 
-## Live Link: https://movierec-frontend.vercel.app/
+## Back End Repo: https://github.com/joewickes/date-ideas-api
 
 ## Table of Contents
 - [Summary](##-summary)
