@@ -13,9 +13,13 @@ import Context from './../../context/Context';
 // Components
 import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
-import apiServices from '../../services/api-services';
 
 class LogInRoute extends React.Component {
+
+  state = {
+    error: null,
+  }
+
   render() {
     return (
       <Context.Consumer>
@@ -31,7 +35,7 @@ class LogInRoute extends React.Component {
                 value.handleGetSomeIdeasClick();
               })
               .catch((error) => {
-                console.log(error);
+                this.setState({error: error.message})
               });
           }
 
@@ -40,6 +44,7 @@ class LogInRoute extends React.Component {
               <Header />
               <main className='LogInRoute'>
                 <h2>Log In</h2>
+                <p style={{color: 'red', marginTop: '20px'}}>{this.state.error}</p>
                 <form className='login-form' onSubmit={(e) => handleLogInSubmit(e, e.target['login-email'].value, e.target['login-pass'].value)}>
                   <div>
                     <input id='login-email' type='email' placeholder='Email' />

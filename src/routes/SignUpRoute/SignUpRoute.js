@@ -17,6 +17,10 @@ import Footer from './../../components/Footer/Footer';
 
 class SignUpRoute extends React.Component {
 
+  state = {
+    error: null,
+  }
+
   render() {
     return (
       <Context.Consumer>
@@ -31,7 +35,7 @@ class SignUpRoute extends React.Component {
               this.props.history.push('/');
             })
             .catch((error) => {
-              console.log(error);
+              this.setState({error: error.message})
             });
         }
 
@@ -40,6 +44,7 @@ class SignUpRoute extends React.Component {
               <Header />
               <main className='SignUpRoute'>
                 <h2>Sign Up</h2>
+                <p style={{color: 'red', marginTop: '20px'}}>{this.state.error}</p>
                 <form className='signup-form' onSubmit={(e) => handleSignUpSubmit(e, e.target['sign-up-email'].value, e.target['sign-up-pass'].value)}>
                   <div>
                     <input id='sign-up-email' type='email' placeholder='Email' required />

@@ -118,7 +118,6 @@ export class ContextProvider extends React.Component {
         loading: true,
         strikethrough: false,
         checked: false,
-        strikethrough: false,
       }
     })
 
@@ -160,7 +159,6 @@ export class ContextProvider extends React.Component {
         loading: true,
         strikethrough: false,
         checked: false,
-        strikethrough: false,
       }
     })
 
@@ -200,7 +198,6 @@ export class ContextProvider extends React.Component {
         loading: true,
         strikethrough: false,
         checked: false,
-        strikethrough: false,
       }
     })
 
