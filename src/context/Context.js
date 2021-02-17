@@ -294,6 +294,10 @@ export class ContextProvider extends React.Component {
       })
     ;
   }
+
+  handleLogOutError = (message) => {
+    this.setState({error: message});
+  }
   
   render() {
     return (
