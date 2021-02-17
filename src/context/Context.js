@@ -286,10 +286,8 @@ export class ContextProvider extends React.Component {
 
     apiServices.findExclusion(userId, ideaID, category)
       .then(result => {
-        console.log('got the thing', result);
       })
       .catch(err => {
-        console.log('errrrrr', err);
         if (err) {
           this.setState({error: 'Whoops! Looks like we can\'t check off any ideas right now!'});
         }
