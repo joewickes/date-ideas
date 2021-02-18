@@ -26,7 +26,7 @@ As a user I can
   - Get just a new, untried activity idea
   - Get just a new, untried meal idea
   - Get just a new, untried dessert idea
-  - Check off an activity, meal, or dessert idea
+  - Check off an activity, meal, or dessert idea for one year (before re-suggestion)
   - Uncheck an activity, meal, or dessert idea
   - I can log out
 
