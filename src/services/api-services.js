@@ -1,98 +1,128 @@
+import axios from 'axios';
+
+const apiUrl = true
+  ? `http://localhost:3000`
+  : `https://radiant-caverns-24681.herokuapp.com`;
+
 const apiServices = {
   getLoggedOutActivities: () => {
-    return fetch(`https://radiant-caverns-24681.herokuapp.com/api/activities`)
-      .then(response => {
-        return response.json();
+    return axios(`${apiUrl}/api/activities`)
+      .then((response) => {
+        return response.data;
       })
-    ;
+      .catch((error) => {
+        console.log('error', error);
+      });
   },
   getLoggedOutMeals: () => {
-    return fetch(`https://radiant-caverns-24681.herokuapp.com/api/meals`)
-      .then(response => {
-        return response.json();
-      })
-    ;
+    return axios(`${apiUrl}/api/meals`).then((response) => {
+      return response.data;
+    });
   },
   getLoggedOutDesserts: () => {
-    return fetch(`https://radiant-caverns-24681.herokuapp.com/api/desserts`)
-      .then(response => {
-        return response.json();
+    return axios(`${apiUrl}/api/desserts`)
+      .then((response) => {
+        return response.data;
       })
-    ;
+      .catch((error) => {
+        console.log('error', error);
+      });
   },
   getLoggedInActivities: (userId) => {
-    return fetch(`https://radiant-caverns-24681.herokuapp.com/api/activities`, {
+    return axios({
+      url: `${apiUrl}/api/activities`,
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify({userId: userId}),
+      body: JSON.stringify({ userId: userId }),
     })
-    .then(response => {
-      return response.json();
-    })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
   },
   getLoggedInMeals: (userId) => {
-    return fetch(`https://radiant-caverns-24681.herokuapp.com/api/meals`, {
+    return axios({
+      url: `${apiUrl}/api/meals`,
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify({userId: userId}),
+      body: JSON.stringify({ userId: userId }),
     })
-    .then(response => {
-      return response.json();
-    })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
   },
   getLoggedInDesserts: (userId) => {
-    return fetch(`https://radiant-caverns-24681.herokuapp.com/api/desserts`, {
+    return axios({
+      url: `${apiUrl}/api/desserts`,
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify({userId: userId}),
+      body: JSON.stringify({ userId: userId }),
     })
-    .then(response => {
-      return response.json();
-    })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
   },
   getLoggedInSingleActivity: (activityId) => {
-    return fetch (`https://radiant-caverns-24681.herokuapp.com/api/activities/${activityId}`)
-      .then(response => {
-        return response.json();
+    return axios(`${apiUrl}/api/activities/${activityId}`)
+      .then((response) => {
+        return response.data;
       })
-    ;
+      .catch((error) => {
+        console.log('error', error);
+      });
   },
   getLoggedInSingleMeal: (mealId) => {
-    return fetch (`https://radiant-caverns-24681.herokuapp.com/api/activities/${mealId}`)
-      .then(response => {
-        return response.json();
+    return axios(`${apiUrl}/api/activities/${mealId}`)
+      .then((response) => {
+        return response.data;
       })
-    ;
+      .catch((error) => {
+        console.log('error', error);
+      });
   },
   getLoggedInSingleDessert: (dessertId) => {
-    return fetch (`https://radiant-caverns-24681.herokuapp.com/api/activities/${dessertId}`)
-      .then(response => {
-        return response.json();
+    return axios(`${apiUrl}/api/activities/${dessertId}`)
+      .then((response) => {
+        return response.data;
       })
-    ;
+      .catch((error) => {
+        console.log('error', error);
+      });
   },
   findExclusion: (userId, categoryId, category) => {
-
-    return fetch(`https://radiant-caverns-24681.herokuapp.com/api/excluded`, {
+    return axios({
+      url: `${apiUrl}/api/excluded`,
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify({userId: userId, categoryId: categoryId, category: category}),
+      body: JSON.stringify({
+        userId: userId,
+        categoryId: categoryId,
+        category: category,
+      }),
     })
-    .then(response => {
-      return response;
-    })
-    .catch(error => {
-      console.log('error', error);
-    })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
   },
-}
+};
 
 export default apiServices;

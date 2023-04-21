@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import Footer from './../components/Footer/Footer';
+import { createRoot } from 'react-dom/client';
 
 it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Footer />, div);
-  ReactDOM.unmountComponentAtNode(div);
+  const container = document.createElement('div');
+  const root = createRoot(container);
+  root.render(<Footer />, document.getElementById('root'));
+  root.unmount();
 });

@@ -1,8 +1,8 @@
 // Dependencies
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 // Styles
 import './Header.css';
@@ -14,32 +14,44 @@ export default class Header extends React.Component {
   render() {
     return (
       <Context.Consumer>
-        {value => {
-
+        {(value) => {
           const logOutUID = () => {
-            firebase.auth().signOut()
+            firebase
+              .auth()
+              .signOut()
               .then(() => {
-                window.sessionStorage.removeItem('user_credentials');
+                window.sessionStorage.removeItem('di_creds');
                 window.sessionStorage.removeItem('uid');
                 value.handleGetSomeIdeasClick();
-              }).catch((error) => {
+              })
+              .catch((error) => {
                 value.handleLogOutError(error.message);
               });
-          }
+          };
 
           return (
             <header>
               <section className='header-left'>
-                <NavLink to='/'><h1>Date Ideas</h1></NavLink>
+                <NavLink to='/'>
+                  <h1>Date Ideas</h1>
+                </NavLink>
               </section>
               <section className='header-right'>
                 <ul className='login-signup-list'>
-                  {window.sessionStorage.getItem('user_credentials') 
-                  ? (<li className='logout-text' onClick={logOutUID}>Logout</li>)
-                  : (<>
-                      <li className='login-text'><NavLink to='/login'>Log In</NavLink></li>
-                      <li className='signup-text'><NavLink to='/signup'>Sign Up</NavLink></li>
-                    </>)}
+                  {window.sessionStorage.getItem('di_creds') ? (
+                    <li className='logout-text' onClick={logOutUID}>
+                      Logout
+                    </li>
+                  ) : (
+                    <>
+                      <li className='login-text'>
+                        <NavLink to='/login'>Log In</NavLink>
+                      </li>
+                      <li className='signup-text'>
+                        <NavLink to='/signup'>Sign Up</NavLink>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </section>
             </header>

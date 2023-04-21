@@ -1,6 +1,6 @@
 // Dependencies
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 // Styles
 import './HomePageRoute.css';
@@ -13,42 +13,87 @@ import Header from './../../components/Header/Header';
 import Welcome from './../../components/Welcome/Welcome';
 import Footer from './../../components/Footer/Footer';
 
-
 class HomePageRoute extends React.Component {
   render() {
     return (
       <Context.Consumer>
-        {value => {
-          return ( 
+        {(value) => {
+          return (
             <>
               <Header />
               <main className='HomePageRoute'>
                 <Welcome />
                 <div className='all-ideas-btn-container'>
-                  <button onClick={value.handleGetSomeIdeasClick} className='all-ideas-btn reg-btn'>Get Some Ideas</button>
+                  <button
+                    onClick={value.handleGetSomeIdeasClick}
+                    className='all-ideas-btn reg-btn'
+                  >
+                    Get Some Ideas
+                  </button>
                 </div>
                 <hr />
-                <p style={{color: 'red', marginTop: '50px', textAlign: 'center'}}>{value.state.error}</p>
+                <p
+                  style={{
+                    color: 'red',
+                    marginTop: '50px',
+                    textAlign: 'center',
+                  }}
+                >
+                  {value.state.error}
+                </p>
                 <section className='all-ideas-container'>
                   <div className='idea'>
                     <div className='idea-top'>
                       <h2>Activity</h2>
                     </div>
                     <div className='idea-middle'>
-                      { value.state.activity.loading ? <p>Loading...</p> : <p style={value.state.activity.strikethrough ? {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}: null}>{value.state.activity.name}</p>}
+                      {value.state.activity.loading ? (
+                        <p>Loading...</p>
+                      ) : (
+                        <p
+                          style={
+                            value.state.activity.strikethrough
+                              ? {
+                                  textDecorationLine: 'line-through',
+                                  textDecorationStyle: 'solid',
+                                }
+                              : null
+                          }
+                        >
+                          {value.state.activity.name}
+                        </p>
+                      )}
                     </div>
                     <div className='idea-bottom'>
-                      {window.sessionStorage.getItem('user_credentials') && value.state.activity.name ?
+                      {window.sessionStorage.getItem('di_creds') &&
+                      value.state.activity.name ? (
                         <div className='already-tried-checkbox-container'>
-                          <label htmlFor='checkbox'>
-                            Already tried this?
-                          </label>
-                          <input checked={value.state.activity.checked ? 'checked' : false} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.activity.id, 'activity', value.state.activity.checked)} className='checkbox' type='checkbox' />
-                        </div> 
-                        : null
-                      }
+                          <label htmlFor='checkbox'>Already tried this?</label>
+                          <input
+                            checked={
+                              value.state.activity.checked ? 'checked' : false
+                            }
+                            onChange={(e) =>
+                              value.handleExclusionToggle(
+                                e,
+                                window.sessionStorage.getItem('uid'),
+                                value.state.activity.id,
+                                'activity',
+                                value.state.activity.checked
+                              )
+                            }
+                            className='checkbox'
+                            type='checkbox'
+                          />
+                        </div>
+                      ) : null}
                       <div className='try-another-btn'>
-                        <button onClick={value.handleTryAnotherActivityClick} className='reg-btn'>Try Another</button>
+                        <button
+                          onClick={value.handleTryAnotherActivityClick}
+                          className='reg-btn'
+                        >
+                          Try Another
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -57,20 +102,53 @@ class HomePageRoute extends React.Component {
                       <h2>Meal</h2>
                     </div>
                     <div className='idea-middle'>
-                      { value.state.meal.loading ? <p>Loading...</p> : <p style={value.state.meal.strikethrough ? {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}: null}>{value.state.meal.name}</p>}
+                      {value.state.meal.loading ? (
+                        <p>Loading...</p>
+                      ) : (
+                        <p
+                          style={
+                            value.state.meal.strikethrough
+                              ? {
+                                  textDecorationLine: 'line-through',
+                                  textDecorationStyle: 'solid',
+                                }
+                              : null
+                          }
+                        >
+                          {value.state.meal.name}
+                        </p>
+                      )}
                     </div>
                     <div className='idea-bottom'>
-                      {window.sessionStorage.getItem('user_credentials') && value.state.meal.name ?
+                      {window.sessionStorage.getItem('di_creds') &&
+                      value.state.meal.name ? (
                         <div className='already-tried-checkbox-container'>
-                          <label htmlFor='checkbox'>
-                            Already tried this?
-                          </label>
-                          <input checked={value.state.meal.checked ? 'checked' : false} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.meal.id, 'meal', value.state.meal.checked)} className='checkbox' type='checkbox' />
-                        </div> 
-                        : null
-                      }
+                          <label htmlFor='checkbox'>Already tried this?</label>
+                          <input
+                            checked={
+                              value.state.meal.checked ? 'checked' : false
+                            }
+                            onChange={(e) =>
+                              value.handleExclusionToggle(
+                                e,
+                                window.sessionStorage.getItem('uid'),
+                                value.state.meal.id,
+                                'meal',
+                                value.state.meal.checked
+                              )
+                            }
+                            className='checkbox'
+                            type='checkbox'
+                          />
+                        </div>
+                      ) : null}
                       <div className='try-another-btn-container'>
-                        <button onClick={value.handleTryAnotherMealClick} className='reg-btn'>Try Another</button>
+                        <button
+                          onClick={value.handleTryAnotherMealClick}
+                          className='reg-btn'
+                        >
+                          Try Another
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -79,20 +157,53 @@ class HomePageRoute extends React.Component {
                       <h2>Dessert</h2>
                     </div>
                     <div className='idea-middle'>
-                      { value.state.dessert.loading ? <p>Loading...</p> : <p style={value.state.dessert.strikethrough ? {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}: null}>{value.state.dessert.name}</p>}
+                      {value.state.dessert.loading ? (
+                        <p>Loading...</p>
+                      ) : (
+                        <p
+                          style={
+                            value.state.dessert.strikethrough
+                              ? {
+                                  textDecorationLine: 'line-through',
+                                  textDecorationStyle: 'solid',
+                                }
+                              : null
+                          }
+                        >
+                          {value.state.dessert.name}
+                        </p>
+                      )}
                     </div>
                     <div className='idea-bottom'>
-                      {window.sessionStorage.getItem('user_credentials') && value.state.dessert.name ?
+                      {window.sessionStorage.getItem('di_creds') &&
+                      value.state.dessert.name ? (
                         <div className='already-tried-checkbox-container'>
-                          <label htmlFor='checkbox'>
-                            Already tried this?
-                          </label>
-                          <input checked={value.state.dessert.checked ? 'checked' : false} onChange={(e) => value.handleExclusionToggle(e, window.sessionStorage.getItem('uid'), value.state.dessert.id, 'dessert', value.state.dessert.checked)} className='checkbox' type='checkbox' />
-                        </div> 
-                        : null
-                      }
+                          <label htmlFor='checkbox'>Already tried this?</label>
+                          <input
+                            checked={
+                              value.state.dessert.checked ? 'checked' : false
+                            }
+                            onChange={(e) =>
+                              value.handleExclusionToggle(
+                                e,
+                                window.sessionStorage.getItem('uid'),
+                                value.state.dessert.id,
+                                'dessert',
+                                value.state.dessert.checked
+                              )
+                            }
+                            className='checkbox'
+                            type='checkbox'
+                          />
+                        </div>
+                      ) : null}
                       <div className='try-another-btn'>
-                        <button onClick={value.handleTryAnotherDessertClick} className='reg-btn'>Try Another</button>
+                        <button
+                          onClick={value.handleTryAnotherDessertClick}
+                          className='reg-btn'
+                        >
+                          Try Another
+                        </button>
                       </div>
                     </div>
                   </div>

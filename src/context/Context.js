@@ -32,7 +32,7 @@ export class ContextProvider extends React.Component {
       checked: false,
     },
     error: null,
-  }
+  };
 
   handleGetSomeIdeasClick = (e) => {
     if (e) {
@@ -50,73 +50,81 @@ export class ContextProvider extends React.Component {
         loading: true,
       },
       error: null,
-    })
+    });
 
     const getAllIdeas = async () => {
-      if (!window.sessionStorage.getItem('user_credentials')) {
+      if (!window.sessionStorage.getItem('di_creds')) {
         try {
-          const loggedOutActivities = await apiServices.getLoggedOutActivities();
-        const loggedOutMeals = await apiServices.getLoggedOutMeals();
-        const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
+          apiServices.getLoggedOutActivities();
+          const loggedOutActivities =
+            await apiServices.getLoggedOutActivities();
+          const loggedOutMeals = await apiServices.getLoggedOutMeals();
+          const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
 
-        this.setState({
-          activity: {
-            name: loggedOutActivities.name,
-            loading: false,
-            strikethrough: false,
-            checked: false,
-          },
-          meal: {
-            name: loggedOutMeals.name,
-            loading: false,
-            strikethrough: false,
-            checked: false,
-          },
-          dessert: {
-            name: loggedOutDesserts.name,
-            loading: false,
-            strikethrough: false,
-            checked: false,
-          }
-        })} catch (error) {
-          this.setState({error: 'Whoops! Looks like we can\'t grab any ideas right now!'})
+          this.setState({
+            activity: {
+              name: loggedOutActivities.name,
+              loading: false,
+              strikethrough: false,
+              checked: false,
+            },
+            meal: {
+              name: loggedOutMeals.name,
+              loading: false,
+              strikethrough: false,
+              checked: false,
+            },
+            dessert: {
+              name: loggedOutDesserts.name,
+              loading: false,
+              strikethrough: false,
+              checked: false,
+            },
+          });
+        } catch (error) {
+          this.setState({
+            error: "Whoops! Looks like we can't grab any ideas right now!",
+          });
         }
-      } else if (window.sessionStorage.getItem('user_credentials')) {
-       try {
-         const loggedInActivities = await apiServices.getLoggedInActivities();
-        const loggedInMeals = await apiServices.getLoggedInMeals();
-        const loggedInDesserts = await apiServices.getLoggedInDesserts();
+      } else if (window.sessionStorage.getItem('di_creds')) {
+        try {
+          const loggedInActivities = await apiServices.getLoggedInActivities();
+          const loggedInMeals = await apiServices.getLoggedInMeals();
+          const loggedInDesserts = await apiServices.getLoggedInDesserts();
 
-        this.setState({
-          activity: {
-            id: parseInt(loggedInActivities.id),
-            name: loggedInActivities.name,
-            loading: false,
-            strikethrough: false,
-            checked: false,
-          },
-          meal: {
-            id: parseInt(loggedInMeals.id),
-            name: loggedInMeals.name,
-            loading: false,
-            strikethrough: false,
-            checked: false,
-          },
-          dessert: {
-            id: parseInt(loggedInDesserts.id),
-            name: loggedInDesserts.name,
-            loading: false,
-            strikethrough: false,
-            checked: false,
-          }
-        })} catch (error) {
-          this.setState({error: 'Whoops! Looks like we can\'t grab any ideas right now!'})
+          this.setState({
+            activity: {
+              id: parseInt(loggedInActivities.id),
+              name: loggedInActivities.name,
+              loading: false,
+              strikethrough: false,
+              checked: false,
+            },
+            meal: {
+              id: parseInt(loggedInMeals.id),
+              name: loggedInMeals.name,
+              loading: false,
+              strikethrough: false,
+              checked: false,
+            },
+            dessert: {
+              id: parseInt(loggedInDesserts.id),
+              name: loggedInDesserts.name,
+              loading: false,
+              strikethrough: false,
+              checked: false,
+            },
+          });
+        } catch (error) {
+          this.setState({
+            error: "Whoops! Looks like we can't grab any ideas right now!",
+          });
         }
       }
-    }
+    };
 
     getAllIdeas();
-  }
+  };
 
   handleTryAnotherActivityClick = (e) => {
     e.preventDefault();
@@ -128,43 +136,50 @@ export class ContextProvider extends React.Component {
         checked: false,
       },
       error: null,
-    })
+    });
 
     const getActivity = async () => {
-      if (!window.sessionStorage.getItem('user_credentials')) {
+      if (!window.sessionStorage.getItem('di_creds')) {
         try {
-          const loggedOutActivities = await apiServices.getLoggedOutActivities();
+          const loggedOutActivities =
+            await apiServices.getLoggedOutActivities();
 
-        this.setState({
-          activity: {
-            name: loggedOutActivities.name,
-            loading: false,
-            strikethrough: false,
-            checked: false,
-          },
-        })} catch (error) {
-          this.setState({error: 'Whoops! Looks like we can\'t grab any activities right now!'})
+          this.setState({
+            activity: {
+              name: loggedOutActivities.name,
+              loading: false,
+              strikethrough: false,
+              checked: false,
+            },
+          });
+        } catch (error) {
+          this.setState({
+            error: "Whoops! Looks like we can't grab any activities right now!",
+          });
         }
-      } else if (window.sessionStorage.getItem('user_credentials')) {
+      } else if (window.sessionStorage.getItem('di_creds')) {
         try {
           const loggedInActivities = await apiServices.getLoggedInActivities();
 
-        this.setState({
-          activity: {
-            id: parseInt(loggedInActivities.id),
-            name: loggedInActivities.name,
-            loading: false,
-            strikethrough: false,
-            checked: false,
-          },
-        })} catch (error) {
-          this.setState({error: 'Whoops! Looks like we can\'t grab any activities right now!'})
+          this.setState({
+            activity: {
+              id: parseInt(loggedInActivities.id),
+              name: loggedInActivities.name,
+              loading: false,
+              strikethrough: false,
+              checked: false,
+            },
+          });
+        } catch (error) {
+          this.setState({
+            error: "Whoops! Looks like we can't grab any activities right now!",
+          });
         }
       }
-    }
+    };
 
     getActivity();
-  }
+  };
 
   handleTryAnotherMealClick = (e) => {
     e.preventDefault();
@@ -176,41 +191,47 @@ export class ContextProvider extends React.Component {
         checked: false,
       },
       error: null,
-    })
+    });
 
     const getMeal = async () => {
-      if (!window.sessionStorage.getItem('user_credentials')) {
+      if (!window.sessionStorage.getItem('di_creds')) {
         try {
           const loggedOutMeals = await apiServices.getLoggedOutMeals();
 
-        this.setState({
-          meal: {
-            name: loggedOutMeals.name,
-            loading: false,
-          },
-        })} catch (error) {
-          this.setState({error: 'Whoops! Looks like we can\'t grab any meals right now!'})
+          this.setState({
+            meal: {
+              name: loggedOutMeals.name,
+              loading: false,
+            },
+          });
+        } catch (error) {
+          this.setState({
+            error: "Whoops! Looks like we can't grab any meals right now!",
+          });
         }
-      } else if (window.sessionStorage.getItem('user_credentials')) {
+      } else if (window.sessionStorage.getItem('di_creds')) {
         try {
           const loggedInMeals = await apiServices.getLoggedInMeals();
 
-        this.setState({
-          meal: {
-            id: parseInt(loggedInMeals.id),
-            name: loggedInMeals.name,
-            loading: false,
-            checked: false,
-            strikethrough: false,
-          },
-        })} catch (error) {
-          this.setState({error: 'Whoops! Looks like we can\'t grab any meals right now!'})
+          this.setState({
+            meal: {
+              id: parseInt(loggedInMeals.id),
+              name: loggedInMeals.name,
+              loading: false,
+              checked: false,
+              strikethrough: false,
+            },
+          });
+        } catch (error) {
+          this.setState({
+            error: "Whoops! Looks like we can't grab any meals right now!",
+          });
         }
       }
-    }
+    };
 
     getMeal();
-  }
+  };
 
   handleTryAnotherDessertClick = (e) => {
     e.preventDefault();
@@ -222,44 +243,49 @@ export class ContextProvider extends React.Component {
         checked: false,
       },
       error: null,
-    })
+    });
 
     const getDessert = async () => {
-      if (!window.sessionStorage.getItem('user_credentials')) {
+      if (!window.sessionStorage.getItem('di_creds')) {
         try {
           const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
 
-        this.setState({
-          dessert: {
-            name: loggedOutDesserts.name,
-            loading: false,
-          },
-        })} catch (error) {
-          this.setState({error: 'Whoops! Looks like we can\'t grab any desserts right now!'})
+          this.setState({
+            dessert: {
+              name: loggedOutDesserts.name,
+              loading: false,
+            },
+          });
+        } catch (error) {
+          this.setState({
+            error: "Whoops! Looks like we can't grab any desserts right now!",
+          });
         }
-      } else if (window.sessionStorage.getItem('user_credentials')) {
+      } else if (window.sessionStorage.getItem('di_creds')) {
         try {
           const loggedInDesserts = await apiServices.getLoggedInDesserts();
 
-        this.setState({
-          dessert: {
-            id: parseInt(loggedInDesserts.id),
-            name: loggedInDesserts.name,
-            loading: false,
-            checked: false,
-            strikethrough: false,
-          },
-        })} catch (error) {
-          this.setState({error: 'Whoops! Looks like we can\'t grab any desserts right now!'})
+          this.setState({
+            dessert: {
+              id: parseInt(loggedInDesserts.id),
+              name: loggedInDesserts.name,
+              loading: false,
+              checked: false,
+              strikethrough: false,
+            },
+          });
+        } catch (error) {
+          this.setState({
+            error: "Whoops! Looks like we can't grab any desserts right now!",
+          });
         }
       }
-    }
+    };
 
     getDessert();
-  }
+  };
 
   handleExclusionToggle = (e, userId, ideaID, category, checked) => {
-
     if (checked) {
       this.setState({
         [category]: {
@@ -269,8 +295,8 @@ export class ContextProvider extends React.Component {
           checked: false,
           strikethrough: false,
           error: null,
-        }
-      })
+        },
+      });
     } else if (!checked) {
       this.setState({
         [category]: {
@@ -280,39 +306,41 @@ export class ContextProvider extends React.Component {
           checked: true,
           strikethrough: true,
           error: null,
-        }
-      })
+        },
+      });
     }
 
-    apiServices.findExclusion(userId, ideaID, category)
-      .then(result => {
-      })
-      .catch(err => {
+    apiServices
+      .findExclusion(userId, ideaID, category)
+      .then((result) => {})
+      .catch((err) => {
         if (err) {
-          this.setState({error: 'Whoops! Looks like we can\'t check off any ideas right now!'});
+          this.setState({
+            error: "Whoops! Looks like we can't check off any ideas right now!",
+          });
         }
-      })
-    ;
-  }
+      });
+  };
 
   handleLogOutError = (message) => {
-    this.setState({error: message});
-  }
-  
+    this.setState({ error: message });
+  };
+
   render() {
     return (
-      <Context.Provider value={{
-        state: this.state,
-        updateUID: this.updateUID,
-        handleGetSomeIdeasClick: this.handleGetSomeIdeasClick,
-        handleTryAnotherActivityClick: this.handleTryAnotherActivityClick,
-        handleTryAnotherMealClick: this.handleTryAnotherMealClick,
-        handleTryAnotherDessertClick: this.handleTryAnotherDessertClick,
-        handleExclusionToggle: this.handleExclusionToggle,
-      }}>
+      <Context.Provider
+        value={{
+          state: this.state,
+          updateUID: this.updateUID,
+          handleGetSomeIdeasClick: this.handleGetSomeIdeasClick,
+          handleTryAnotherActivityClick: this.handleTryAnotherActivityClick,
+          handleTryAnotherMealClick: this.handleTryAnotherMealClick,
+          handleTryAnotherDessertClick: this.handleTryAnotherDessertClick,
+          handleExclusionToggle: this.handleExclusionToggle,
+        }}
+      >
         {this.props.children}
       </Context.Provider>
     );
-   
   }
 }

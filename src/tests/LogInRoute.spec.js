@@ -1,17 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
-import {ContextProvider} from './../context/Context';
+import { BrowserRouter } from 'react-router-dom';
+import { ContextProvider } from './../context/Context';
 
 import LogInRoute from './../routes/LogInRoute/LogInRoute';
 
+import { createRoot } from 'react-dom/client';
+
 it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(
+  const container = document.createElement('div');
+  const root = createRoot(container);
+  root.render(
     <BrowserRouter>
       <ContextProvider>
         <LogInRoute />
       </ContextProvider>
-    </BrowserRouter>, div);
-  ReactDOM.unmountComponentAtNode(div);
+    </BrowserRouter>,
+    document.getElementById('root')
+  );
+  root.unmount();
 });
