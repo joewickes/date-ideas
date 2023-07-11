@@ -53,7 +53,7 @@ export class ContextProvider extends React.Component {
     });
 
     const getAllIdeas = async () => {
-      if (typeof window !== 'undefined' && window.sessionStorage.getItem('di_creds')) {
+      if (typeof window !== 'undefined' && !window.sessionStorage.getItem('di_creds')) {
         try {
           const loggedOutActivities = await apiServices.getLoggedOutActivities();
           const loggedOutMeals = await apiServices.getLoggedOutMeals();
