@@ -14,9 +14,10 @@ import Context from '../context/Context';
 // Components
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import { redirect } from 'next/dist/server/api-utils';
+import { useRouter } from 'next/navigation';
 
 class SignUpRoute extends React.Component {
+  router = useRouter();
   state = {
     error: null,
   };
@@ -34,7 +35,7 @@ class SignUpRoute extends React.Component {
                 if (typeof window !== 'undefined') {
                   window.sessionStorage.setItem('di_creds', userCredential.user.refreshToken);
                   window.sessionStorage.setItem('uid', userCredential.user.uid);
-                  redirect('/');
+                  this.router.replace('/');
                   value.handleGetSomeIdeasClick();
                 }
               })
