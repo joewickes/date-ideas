@@ -15,7 +15,6 @@ import Context from '../context/Context';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 const SignUpRoute = () => {
   const [error, errorSet] = React.useState(null);
