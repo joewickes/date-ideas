@@ -53,11 +53,9 @@ export class ContextProvider extends React.Component {
     });
 
     const getAllIdeas = async () => {
-      if (!window.sessionStorage.getItem('di_creds')) {
+      if (typeof window !== 'undefined' && window.sessionStorage.getItem('di_creds')) {
         try {
-          apiServices.getLoggedOutActivities();
-          const loggedOutActivities =
-            await apiServices.getLoggedOutActivities();
+          const loggedOutActivities = await apiServices.getLoggedOutActivities();
           const loggedOutMeals = await apiServices.getLoggedOutMeals();
           const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
 
@@ -86,7 +84,7 @@ export class ContextProvider extends React.Component {
             error: "Whoops! Looks like we can't grab any ideas right now!",
           });
         }
-      } else if (window.sessionStorage.getItem('di_creds')) {
+      } else if (typeof window !== 'undefined' && window.sessionStorage.getItem('di_creds')) {
         try {
           const loggedInActivities = await apiServices.getLoggedInActivities();
           const loggedInMeals = await apiServices.getLoggedInMeals();
@@ -139,10 +137,9 @@ export class ContextProvider extends React.Component {
     });
 
     const getActivity = async () => {
-      if (!window.sessionStorage.getItem('di_creds')) {
+      if (typeof window !== 'undefined' && !window.sessionStorage.getItem('di_creds')) {
         try {
-          const loggedOutActivities =
-            await apiServices.getLoggedOutActivities();
+          const loggedOutActivities = await apiServices.getLoggedOutActivities();
 
           this.setState({
             activity: {
@@ -157,7 +154,7 @@ export class ContextProvider extends React.Component {
             error: "Whoops! Looks like we can't grab any activities right now!",
           });
         }
-      } else if (window.sessionStorage.getItem('di_creds')) {
+      } else if (typeof window !== 'undefined' && sessionStorage.getItem('di_creds')) {
         try {
           const loggedInActivities = await apiServices.getLoggedInActivities();
 
@@ -194,7 +191,7 @@ export class ContextProvider extends React.Component {
     });
 
     const getMeal = async () => {
-      if (!window.sessionStorage.getItem('di_creds')) {
+      if (typeof window !== 'undefined' && !window.sessionStorage.getItem('di_creds')) {
         try {
           const loggedOutMeals = await apiServices.getLoggedOutMeals();
 
@@ -209,7 +206,7 @@ export class ContextProvider extends React.Component {
             error: "Whoops! Looks like we can't grab any meals right now!",
           });
         }
-      } else if (window.sessionStorage.getItem('di_creds')) {
+      } else if (typeof window !== 'undefined' && window.sessionStorage.getItem('di_creds')) {
         try {
           const loggedInMeals = await apiServices.getLoggedInMeals();
 
@@ -246,7 +243,7 @@ export class ContextProvider extends React.Component {
     });
 
     const getDessert = async () => {
-      if (!window.sessionStorage.getItem('di_creds')) {
+      if (typeof window !== 'undefined' && !window.sessionStorage.getItem('di_creds')) {
         try {
           const loggedOutDesserts = await apiServices.getLoggedOutDesserts();
 
@@ -261,7 +258,7 @@ export class ContextProvider extends React.Component {
             error: "Whoops! Looks like we can't grab any desserts right now!",
           });
         }
-      } else if (window.sessionStorage.getItem('di_creds')) {
+      } else if (typeof window !== 'undefined' && window.sessionStorage.getItem('di_creds')) {
         try {
           const loggedInDesserts = await apiServices.getLoggedInDesserts();
 

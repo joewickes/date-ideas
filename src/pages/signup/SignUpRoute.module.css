@@ -1,25 +1,27 @@
-.LogInRoute {
-  height: 90vh
+.SignUpRoute {
+  height: 90vh;
 }
 
-.LogInRoute, .login-form, .login-form div {
+.SignUpRoute,
+.signup_form,
+.signup_form div {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
-.LogInRoute h2 {
+.SignUpRoute h2 {
   color: #ffffff;
   margin-top: 30px;
 }
 
-.login-form div {
+.signup_form div {
   width: 60%;
   padding-top: 30px;
 }
 
-.login-form div input {
+.signup_form div input {
   width: 100%;
   background-color: transparent;
   border: 2px solid #ffffff;
@@ -29,33 +31,33 @@
   border-radius: 6px;
 }
 
-.login-form div input::placeholder {
+.signup_form div input::placeholder {
   color: #ffffffb0;
 }
 
-.login-form div button {
+.signup_form div button {
   width: 50%;
   padding: 15px;
   background-color: transparent;
-  border: 2px solid #FF9D1E;
-  color: #FF9D1E; 
+  border: 2px solid #ff9d1e;
+  color: #ff9d1e;
   margin: 10px 0px;
   border-radius: 6px;
 }
 
-.login-form div button:hover {
-  transition: all .15s ease-in-out;
-  border-color: #FF35C9;
-  color: #FF35C9;
+.signup_form div button:hover {
+  transition: all 0.15s ease-in-out;
+  border-color: #ff35c9;
+  color: #ff35c9;
   cursor: pointer;
 }
 
 @media all and (min-width: 800px) {
-  .login-form div {
+  .signup_form div {
     width: 35%;
   }
 
-  .login-form div button {
+  .signup_form div button {
     width: 40%;
   }
 }

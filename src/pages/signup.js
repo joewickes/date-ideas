@@ -1,18 +1,19 @@
+'use client';
+
 // Dependencies
 import React from 'react';
-import { withRouter } from 'react-router';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 
 // Styles
-import './SignUpRoute.css';
+import styles from './signup/SignUpRoute.module.css';
 
 // Context
-import Context from './../../context/Context';
+import Context from '../context/Context';
 
 // Components
-import Header from './../../components/Header/Header';
-import Footer from './../../components/Footer/Footer';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 class SignUpRoute extends React.Component {
   state = {
@@ -29,13 +30,12 @@ class SignUpRoute extends React.Component {
               .auth()
               .createUserWithEmailAndPassword(email, pass)
               .then((userCredential) => {
-                window.sessionStorage.setItem(
-                  'di_creds',
-                  userCredential.user.refreshToken
-                );
-                window.sessionStorage.setItem('uid', userCredential.user.uid);
-                this.props.history.push('/');
-                value.handleGetSomeIdeasClick();
+                if (typeof window !== 'undefined') {
+                  window.sessionStorage.setItem('di_creds', userCredential.user.refreshToken);
+                  window.sessionStorage.setItem('uid', userCredential.user.uid);
+                  this.props.history.push('/');
+                  value.handleGetSomeIdeasClick();
+                }
               })
               .catch((error) => {
                 this.setState({ error: error.message });
@@ -45,7 +45,7 @@ class SignUpRoute extends React.Component {
           return (
             <>
               <Header />
-              <main className='SignUpRoute'>
+              <main className={styles.SignUpRoute}>
                 <h2>Sign Up</h2>
                 <p
                   style={{
@@ -57,33 +57,19 @@ class SignUpRoute extends React.Component {
                   {this.state.error}
                 </p>
                 <form
-                  className='signup-form'
+                  className={styles.signup_form}
                   onSubmit={(e) =>
-                    handleSignUpSubmit(
-                      e,
-                      e.target['sign-up-email'].value,
-                      e.target['sign-up-pass'].value
-                    )
+                    handleSignUpSubmit(e, e.target['sign-up-email'].value, e.target['sign-up-pass'].value)
                   }
                 >
                   <div>
-                    <input
-                      id='sign-up-email'
-                      type='email'
-                      placeholder='Email'
-                      required
-                    />
+                    <input id="sign-up-email" type="email" placeholder="Email" required />
                   </div>
                   <div>
-                    <input
-                      id='sign-up-pass'
-                      type='password'
-                      placeholder='Password'
-                      required
-                    />
+                    <input id="sign-up-pass" type="password" placeholder="Password" required />
                   </div>
                   <div>
-                    <button type='submit'>Sign Up</button>
+                    <button type="submit">Sign Up</button>
                   </div>
                 </form>
               </main>
@@ -96,4 +82,4 @@ class SignUpRoute extends React.Component {
   }
 }
 
-export default withRouter(SignUpRoute);
+export default SignUpRoute;

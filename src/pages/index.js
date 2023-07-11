@@ -1,17 +1,31 @@
+'use client';
+
+// Dependencies
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+};
+
+firebase.initializeApp(firebaseConfig);
+
 // Dependencies
 import React from 'react';
-import { withRouter } from 'react-router';
-
-// Styles
-import './HomePageRoute.css';
 
 // Context
-import Context from '../../context/Context';
+import Context from '../context/Context';
 
 // Components
-import Header from './../../components/Header/Header';
-import Welcome from './../../components/Welcome/Welcome';
-import Footer from './../../components/Footer/Footer';
+import Header from '../components/Header/Header';
+import Welcome from '../components/Welcome/Welcome';
+import Footer from '../components/Footer/Footer';
 
 class HomePageRoute extends React.Component {
   render() {
@@ -21,13 +35,10 @@ class HomePageRoute extends React.Component {
           return (
             <>
               <Header />
-              <main className='HomePageRoute'>
+              <main className="HomePageRoute">
                 <Welcome />
-                <div className='all-ideas-btn-container'>
-                  <button
-                    onClick={value.handleGetSomeIdeasClick}
-                    className='all-ideas-btn reg-btn'
-                  >
+                <div className="all-ideas-btn-container">
+                  <button onClick={value.handleGetSomeIdeasClick} className="all-ideas-btn reg-btn">
                     Get Some Ideas
                   </button>
                 </div>
@@ -41,12 +52,12 @@ class HomePageRoute extends React.Component {
                 >
                   {value.state.error}
                 </p>
-                <section className='all-ideas-container'>
-                  <div className='idea'>
-                    <div className='idea-top'>
+                <section className="all-ideas-container">
+                  <div className="idea">
+                    <div className="idea-top">
                       <h2>Activity</h2>
                     </div>
-                    <div className='idea-middle'>
+                    <div className="idea-middle">
                       {value.state.activity.loading ? (
                         <p>Loading...</p>
                       ) : (
@@ -64,44 +75,40 @@ class HomePageRoute extends React.Component {
                         </p>
                       )}
                     </div>
-                    <div className='idea-bottom'>
-                      {window.sessionStorage.getItem('di_creds') &&
+                    <div className="idea-bottom">
+                      {typeof window !== 'undefined' &&
+                      sessionStorage.getItem('di_creds') &&
                       value.state.activity.name ? (
-                        <div className='already-tried-checkbox-container'>
-                          <label htmlFor='checkbox'>Already tried this?</label>
+                        <div className="already-tried-checkbox-container">
+                          <label htmlFor="checkbox">Already tried this?</label>
                           <input
-                            checked={
-                              value.state.activity.checked ? 'checked' : false
-                            }
+                            checked={value.state.activity.checked ? 'checked' : false}
                             onChange={(e) =>
                               value.handleExclusionToggle(
                                 e,
-                                window.sessionStorage.getItem('uid'),
+                                typeof window !== 'undefined' ? window.sessionStorage.getItem('uid') : null,
                                 value.state.activity.id,
                                 'activity',
-                                value.state.activity.checked
+                                value.state.activity.checked,
                               )
                             }
-                            className='checkbox'
-                            type='checkbox'
+                            className="checkbox"
+                            type="checkbox"
                           />
                         </div>
                       ) : null}
-                      <div className='try-another-btn'>
-                        <button
-                          onClick={value.handleTryAnotherActivityClick}
-                          className='reg-btn'
-                        >
+                      <div className="try-another-btn">
+                        <button onClick={value.handleTryAnotherActivityClick} className="reg-btn">
                           Try Another
                         </button>
                       </div>
                     </div>
                   </div>
-                  <div className='idea'>
-                    <div className='idea-top'>
+                  <div className="idea">
+                    <div className="idea-top">
                       <h2>Meal</h2>
                     </div>
-                    <div className='idea-middle'>
+                    <div className="idea-middle">
                       {value.state.meal.loading ? (
                         <p>Loading...</p>
                       ) : (
@@ -119,44 +126,40 @@ class HomePageRoute extends React.Component {
                         </p>
                       )}
                     </div>
-                    <div className='idea-bottom'>
-                      {window.sessionStorage.getItem('di_creds') &&
+                    <div className="idea-bottom">
+                      {typeof window !== 'undefined' &&
+                      window.sessionStorage.getItem('di_creds') &&
                       value.state.meal.name ? (
-                        <div className='already-tried-checkbox-container'>
-                          <label htmlFor='checkbox'>Already tried this?</label>
+                        <div className="already-tried-checkbox-container">
+                          <label htmlFor="checkbox">Already tried this?</label>
                           <input
-                            checked={
-                              value.state.meal.checked ? 'checked' : false
-                            }
+                            checked={value.state.meal.checked ? 'checked' : false}
                             onChange={(e) =>
                               value.handleExclusionToggle(
                                 e,
-                                window.sessionStorage.getItem('uid'),
+                                typeof window !== 'undefined' ? window.sessionStorage.getItem('uid') : null,
                                 value.state.meal.id,
                                 'meal',
-                                value.state.meal.checked
+                                value.state.meal.checked,
                               )
                             }
-                            className='checkbox'
-                            type='checkbox'
+                            className="checkbox"
+                            type="checkbox"
                           />
                         </div>
                       ) : null}
-                      <div className='try-another-btn-container'>
-                        <button
-                          onClick={value.handleTryAnotherMealClick}
-                          className='reg-btn'
-                        >
+                      <div className="try-another-btn-container">
+                        <button onClick={value.handleTryAnotherMealClick} className="reg-btn">
                           Try Another
                         </button>
                       </div>
                     </div>
                   </div>
-                  <div className='idea'>
-                    <div className='idea-top'>
+                  <div className="idea">
+                    <div className="idea-top">
                       <h2>Dessert</h2>
                     </div>
-                    <div className='idea-middle'>
+                    <div className="idea-middle">
                       {value.state.dessert.loading ? (
                         <p>Loading...</p>
                       ) : (
@@ -174,34 +177,30 @@ class HomePageRoute extends React.Component {
                         </p>
                       )}
                     </div>
-                    <div className='idea-bottom'>
-                      {window.sessionStorage.getItem('di_creds') &&
+                    <div className="idea-bottom">
+                      {typeof window !== 'undefined' &&
+                      sessionStorage.getItem('di_creds') &&
                       value.state.dessert.name ? (
-                        <div className='already-tried-checkbox-container'>
-                          <label htmlFor='checkbox'>Already tried this?</label>
+                        <div className="already-tried-checkbox-container">
+                          <label htmlFor="checkbox">Already tried this?</label>
                           <input
-                            checked={
-                              value.state.dessert.checked ? 'checked' : false
-                            }
+                            checked={value.state.dessert.checked ? 'checked' : false}
                             onChange={(e) =>
                               value.handleExclusionToggle(
                                 e,
-                                window.sessionStorage.getItem('uid'),
+                                typeof window !== 'undefined' ? window.sessionStorage.getItem('uid') : null,
                                 value.state.dessert.id,
                                 'dessert',
-                                value.state.dessert.checked
+                                value.state.dessert.checked,
                               )
                             }
-                            className='checkbox'
-                            type='checkbox'
+                            className="checkbox"
+                            type="checkbox"
                           />
                         </div>
                       ) : null}
-                      <div className='try-another-btn'>
-                        <button
-                          onClick={value.handleTryAnotherDessertClick}
-                          className='reg-btn'
-                        >
+                      <div className="try-another-btn">
+                        <button onClick={value.handleTryAnotherDessertClick} className="reg-btn">
                           Try Another
                         </button>
                       </div>
@@ -218,4 +217,4 @@ class HomePageRoute extends React.Component {
   }
 }
 
-export default withRouter(HomePageRoute);
+export default HomePageRoute;

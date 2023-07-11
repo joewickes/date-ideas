@@ -1,3 +1,24 @@
+/* color pallette = brown - #524438, orange - #ff9d1e, gray - #B9A89A, seafoam green - #00D5B6, green - #009B82 */
+
+* {
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #232323;
+}
+
+/* main {
+  height: 100vh;
+} */
+
+.reg-btn {
+  border: none;
+  background-color: #00bce1;
+  padding: 10px;
+  border-radius: 6px;
+}
+
 .HomePageRoute {
   display: flex;
   flex-direction: column;
@@ -6,20 +27,20 @@
 
 .HomePageRoute hr {
   width: 75%;
-  border-top: #5F5F5F;
+  border-top: #5f5f5f;
 }
 
 .all-ideas-btn {
   background-color: transparent;
-  border: 2px solid #FF9D1E;
-  color: #FF9D1E;
+  border: 2px solid #ff9d1e;
+  color: #ff9d1e;
   margin: 7vh;
 }
 
 .all-ideas-btn:hover {
-  transition: all .15s ease-in-out;
-  border-color: #FF35C9;
-  color: #FF35C9;
+  transition: all 0.15s ease-in-out;
+  border-color: #ff35c9;
+  color: #ff35c9;
   cursor: pointer;
 }
 
@@ -38,7 +59,7 @@
   flex-direction: column;
   align-items: center;
   border-radius: 40px;
-  background: linear-gradient(to bottom right, #FF9D1E, #FF35C9);
+  background: linear-gradient(to bottom right, #ff9d1e, #ff35c9);
   height: 45vh;
   color: #fff;
   margin-top: 7vh;
@@ -101,7 +122,7 @@
 }
 
 .idea-bottom button:hover {
-  transition: all .15s ease-in-out;
+  transition: all 0.15s ease-in-out;
   border-color: #232323;
   color: #232323;
   cursor: pointer;
@@ -111,7 +132,7 @@
   .HomePageRoute hr {
     width: 50%;
   }
-  
+
   .all-ideas-container {
     width: 60%;
     display: flex;

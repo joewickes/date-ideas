@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = true
-  ? `http://localhost:3000`
-  : `https://radiant-caverns-24681.herokuapp.com`;
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const apiServices = {
   getLoggedOutActivities: () => {

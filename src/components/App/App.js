@@ -3,9 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 
-// Styles
-import './App.css';
-
 // Components
 import HomePageRoute from './../../routes/HomePageRoute/HomePageRoute';
 import SignUpRoute from './../../routes/SignUpRoute/SignUpRoute';
@@ -25,11 +22,11 @@ firebase.initializeApp(firebaseConfig);
 
 export default function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <Switch>
-        <Route exact path='/' component={() => <HomePageRoute />} />
-        <Route exact path='/signup' component={() => <SignUpRoute />} />
-        <Route exact path='/login' component={() => <LogInRoute />} />
+        <Route exact path="/" component={() => <HomePageRoute />} />
+        <Route exact path="/signup" component={() => <SignUpRoute />} />
+        <Route exact path="/login" component={() => <LogInRoute />} />
       </Switch>
     </div>
   );

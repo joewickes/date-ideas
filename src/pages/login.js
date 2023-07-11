@@ -1,18 +1,19 @@
+'use client';
+
 // Dependencies
 import React from 'react';
-import { withRouter } from 'react-router';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 
 // Styles
-import './LogInRoute.css';
+import styles from './login/LogInRoute.module.css';
 
 // Context
-import Context from './../../context/Context';
+import Context from '../context/Context';
 
 // Components
-import Header from './../../components/Header/Header';
-import Footer from './../../components/Footer/Footer';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 class LogInRoute extends React.Component {
   state = {
@@ -29,12 +30,11 @@ class LogInRoute extends React.Component {
               .auth()
               .signInWithEmailAndPassword(email, pass)
               .then(async (userCredential) => {
-                window.sessionStorage.setItem(
-                  'di_creds',
-                  userCredential.user.refreshToken
-                );
-                window.sessionStorage.setItem('uid', userCredential.user.uid);
-                this.props.history.push('/');
+                if (typeof window !== 'undefined') {
+                  window.sessionStorage.setItem('di_creds', userCredential.user.refreshToken);
+                  window.sessionStorage.setItem('uid', userCredential.user.uid);
+                  this.props.history.push('/');
+                }
 
                 value.handleGetSomeIdeasClick();
               })
@@ -46,7 +46,7 @@ class LogInRoute extends React.Component {
           return (
             <>
               <Header />
-              <main className='LogInRoute'>
+              <main className={styles.LogInRoute}>
                 <h2>Log In</h2>
                 <p
                   style={{
@@ -58,27 +58,17 @@ class LogInRoute extends React.Component {
                   {this.state.error}
                 </p>
                 <form
-                  className='login-form'
-                  onSubmit={(e) =>
-                    handleLogInSubmit(
-                      e,
-                      e.target['login-email'].value,
-                      e.target['login-pass'].value
-                    )
-                  }
+                  className={styles.login_form}
+                  onSubmit={(e) => handleLogInSubmit(e, e.target['login-email'].value, e.target['login-pass'].value)}
                 >
                   <div>
-                    <input id='login-email' type='email' placeholder='Email' />
+                    <input id="login-email" type="email" placeholder="Email" />
                   </div>
                   <div>
-                    <input
-                      id='login-pass'
-                      type='password'
-                      placeholder='Password'
-                    />
+                    <input id="login-pass" type="password" placeholder="Password" />
                   </div>
                   <div>
-                    <button type='submit'>Log In</button>
+                    <button type="submit">Log In</button>
                   </div>
                 </form>
               </main>
@@ -91,4 +81,4 @@ class LogInRoute extends React.Component {
   }
 }
 
-export default withRouter(LogInRoute);
+export default LogInRoute;
