@@ -14,6 +14,7 @@ import Context from '../context/Context';
 // Components
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import { redirect } from 'next/dist/server/api-utils';
 
 class SignUpRoute extends React.Component {
   state = {
@@ -33,7 +34,7 @@ class SignUpRoute extends React.Component {
                 if (typeof window !== 'undefined') {
                   window.sessionStorage.setItem('di_creds', userCredential.user.refreshToken);
                   window.sessionStorage.setItem('uid', userCredential.user.uid);
-                  this.props.history.push('/');
+                  redirect('/');
                   value.handleGetSomeIdeasClick();
                 }
               })

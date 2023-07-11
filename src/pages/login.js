@@ -4,6 +4,7 @@
 import React from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { redirect } from 'next/navigation';
 
 // Styles
 import styles from './login/LogInRoute.module.css';
@@ -33,7 +34,7 @@ class LogInRoute extends React.Component {
                 if (typeof window !== 'undefined') {
                   window.sessionStorage.setItem('di_creds', userCredential.user.refreshToken);
                   window.sessionStorage.setItem('uid', userCredential.user.uid);
-                  this.props.history.push('/');
+                  redirect('/');
                 }
 
                 value.handleGetSomeIdeasClick();
