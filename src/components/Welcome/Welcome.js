@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Styles
-import styles from './Welcome.module.css';
+import styles from './Welcome.module.scss';
 
 // Context
 import Context from './../../context/Context';
@@ -15,8 +15,7 @@ export default class Welcome extends React.Component {
           const loggedOut = (
             <section className={styles.Welcome}>
               <h2>Welcome to Date Ideas!</h2>
-              <p>Here's how you can use it:</p>
-              <ol>
+              <ul>
                 <li>Click on 'Get Some Ideas' to generate a random activity, meal, and dessert for your date below</li>
                 <li>Click 'Try Another' at the bottom of each idea if you want to see a different one</li>
                 <li>
@@ -27,7 +26,7 @@ export default class Welcome extends React.Component {
                   Once logged in, you can check off ideas that you've already done, so they won't be displayed again for
                   a whole year
                 </li>
-              </ol>
+              </ul>
             </section>
           );
 

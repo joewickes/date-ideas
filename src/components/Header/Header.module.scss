@@ -6,22 +6,25 @@
 .header a {
   color: #fff;
   text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 2px;
 }
 
 .header_left,
 .header_right {
-  flex: 1;
   display: flex;
-  padding: 25px;
+  padding: 5px 20px;
   align-items: center;
 }
 
 .header_left {
   justify-content: flex-start;
+  flex: 0.5;
 }
 
 .header_right {
   justify-content: flex-end;
+  flex: 1.5;
 }
 
 .header_right li {
@@ -40,11 +43,12 @@
 .logout_text {
   color: #fff;
   cursor: pointer;
+  font-size: 16px;
 }
 
-.login_text:hover,
-.signup_text:hover,
-.logout_text:hover {
+.login_text a:hover,
+.signup_text a:hover,
+.logout_text a:hover {
+  border-bottom: 1px solid #fff;
   transition: all 0.1s ease-in-out;
-  transform: scale(1.07);
 }

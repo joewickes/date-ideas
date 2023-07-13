@@ -1,4 +1,4 @@
-import './global.css';
+import './global.scss';
 
 // Context
 import { ContextProvider } from '../context/Context';

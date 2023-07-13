@@ -6,7 +6,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 
 // Styles
-import styles from './signup/SignUpRoute.module.css';
+import styles from './signup/SignUpRoute.module.scss';
 
 // Context
 import Context from '../context/Context';
@@ -17,7 +17,7 @@ import Footer from '../components/Footer/Footer';
 import { useRouter } from 'next/navigation';
 
 const SignUpRoute = () => {
-  const [error, errorSet] = React.useState(null);
+  const [error, errorSet] = useState(null);
 
   const router = useRouter();
 
@@ -47,15 +47,8 @@ const SignUpRoute = () => {
             <Header />
             <main className={styles.SignUpRoute}>
               <h2>Sign Up</h2>
-              <p
-                style={{
-                  color: 'red',
-                  marginTop: '20px',
-                  textAlign: 'center',
-                }}
-              >
-                {error}
-              </p>
+              {error ? <p>{error}</p> : null}
+
               <form
                 className={styles.signup_form}
                 onSubmit={(e) => handleSignUpSubmit(e, e.target['sign-up-email'].value, e.target['sign-up-pass'].value)}

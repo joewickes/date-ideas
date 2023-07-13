@@ -5,7 +5,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 
 // Styles
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 
 // Context
 import Context from './../../context/Context';
@@ -35,7 +35,7 @@ export default class Header extends React.Component {
           return (
             <header className={styles.header}>
               <section className={styles.header_left}>
-                <Link href="/">
+                <Link href={typeof window !== 'undefined' && window.location.pathname !== '/' ? '/' : '#'}>
                   <h1>Date Ideas</h1>
                 </Link>
               </section>

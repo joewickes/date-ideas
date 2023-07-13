@@ -43,15 +43,7 @@ class HomePageRoute extends React.Component {
                   </button>
                 </div>
                 <hr />
-                <p
-                  style={{
-                    color: 'red',
-                    marginTop: '50px',
-                    textAlign: 'center',
-                  }}
-                >
-                  {value.state.error}
-                </p>
+                {value.state.error ? <p className="error">{value.state.error}</p> : null}
                 <section className="all-ideas-container">
                   <div className="idea">
                     <div className="idea-top">
@@ -99,7 +91,7 @@ class HomePageRoute extends React.Component {
                       ) : null}
                       <div className="try-another-btn">
                         <button onClick={value.handleTryAnotherActivityClick} className="reg-btn">
-                          Try Another
+                          {value.state.activity.name ? `Try Another` : `Get Idea`}
                         </button>
                       </div>
                     </div>
@@ -150,7 +142,7 @@ class HomePageRoute extends React.Component {
                       ) : null}
                       <div className="try-another-btn-container">
                         <button onClick={value.handleTryAnotherMealClick} className="reg-btn">
-                          Try Another
+                          {value.state.meal.name ? `Try Another` : `Get Idea`}
                         </button>
                       </div>
                     </div>
@@ -201,7 +193,7 @@ class HomePageRoute extends React.Component {
                       ) : null}
                       <div className="try-another-btn">
                         <button onClick={value.handleTryAnotherDessertClick} className="reg-btn">
-                          Try Another
+                          {value.state.dessert.name ? `Try Another` : `Get Idea`}
                         </button>
                       </div>
                     </div>

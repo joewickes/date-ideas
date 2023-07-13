@@ -1,14 +1,15 @@
 # Date Ideas
 
-## Live Link: https://date-ideas.vercel.app/
+## Check it out live [HERE](https://date-ideas.vercel.app/)!
 
-## Back End Repo: https://github.com/joewickes/date-ideas-api
+## [Backend Repo](https://github.com/joewickes/date-ideas-api)
 
 ## Table of Contents
 
 - [Summary](##-summary)
 - [How To Use It](##-how-to-use-it)
 - [Technologies Used](##-technologies-used)
+- [Development](##-development)
 
 ## Summary
 
@@ -85,7 +86,21 @@ Automatically Redirected Home Page (Logged In)
 
 ## Technologies Used
 
+- Next.js
 - React
-- React Router
 - React Context
 - Google Firebase Auth
+- SASS
+- Vercel
+
+## Development
+
+### Getting started
+
+- Clone the repo
+- Install dependencies with `yarn install`
+- Run the app with `yarn dev`
+- Checkout new feature or bug branch
+- Make changes and save to see them reflected in the browser
+- Commit changes and PR to main branch
+- Main branch changes will be automatically deployed to Vercel

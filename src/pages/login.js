@@ -7,7 +7,7 @@ import 'firebase/compat/auth';
 import { useRouter } from 'next/navigation';
 
 // Styles
-import styles from './login/LogInRoute.module.css';
+import styles from './login/LogInRoute.module.scss';
 
 // Context
 import Context from '../context/Context';
@@ -47,15 +47,8 @@ const LogInRoute = () => {
             <Header />
             <main className={styles.LogInRoute}>
               <h2>Log In</h2>
-              <p
-                style={{
-                  color: 'red',
-                  marginTop: '20px',
-                  textAlign: 'center',
-                }}
-              >
-                {error}
-              </p>
+              {error ? <p>{error}</p> : null}
+
               <form
                 className={styles.login_form}
                 onSubmit={(e) => handleLogInSubmit(e, e.target['login-email'].value, e.target['login-pass'].value)}
